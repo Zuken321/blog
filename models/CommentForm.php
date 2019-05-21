@@ -10,7 +10,7 @@ class CommentForm extends Model
     public function rules()
     {
         return [
-            [['author', 'email'], 'required'],
+            [['author', 'text'], 'required'],
 
         ];
     }
