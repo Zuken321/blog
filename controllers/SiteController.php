@@ -4,11 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Html;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Records;
 
 class SiteController extends Controller
 {
@@ -124,5 +126,18 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    public function actionPosts()
+    {
+        if(isset($_GET['record_id']))
+        {
+            $records = Records::find()->where(['record_id' => $_GET['record_id']])->all();
+            return $this->render('post', ['records' => $records]);
+        }
+        else
+        {
+            $records = Records::find()->all();
+            return $this->render('posts', ['records' => $records]);
+        }
     }
 }
