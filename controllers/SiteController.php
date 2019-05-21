@@ -133,13 +133,13 @@ class SiteController extends Controller
     {
         if(isset($_GET['post_id']))
         {
-            $model = new CommentsForm();
+            $model = new CommentForm();
             if($model->load(Yii::$app->request->post()) && $model->validate())
             {
-                //Дописать добавление в БД
+
             }
             $post = PostsTable::find()->where(['post_id' => $_GET['post_id']])->all();
-            return $this->render('post', ['post' => $post]);
+            return $this->render('post', ['post' => $post, 'model' => $model]);
         }
         else
         {
