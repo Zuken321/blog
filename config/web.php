@@ -55,7 +55,7 @@ $config = [
                 'login' => 'site/login',
                 'logout' => 'site/logout',
                 'posts' => 'site/posts',
-                'posts/<record_id:\d+>' => 'site/posts',
+                'posts/<post_id:\d+>' => 'site/posts',
             ],
         ],
     ],
