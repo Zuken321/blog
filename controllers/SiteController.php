@@ -133,13 +133,18 @@ class SiteController extends Controller
     {
         if(isset($_GET['post_id']))
         {
-            $model = new CommentsForm();
+            $model = new CommentForm();
             if($model->load(Yii::$app->request->post()) && $model->validate())
             {
-                //Дописать добавление в БД
+                $add_comment = new CommentsTable();
+                $add_comment->post_id = $_GET['post_id'];
+                $add_comment->author = $model->author;
+                $add_comment->text = $model->text;
+                $add_comment->save();
             }
             $post = PostsTable::find()->where(['post_id' => $_GET['post_id']])->all();
-            return $this->render('post', ['post' => $post]);
+            $comments = CommentsTable::find()->where(['post_id' => $_GET['post_id']])->all();
+            return $this->render('post', ['post' => $post, 'model' => $model, 'comments' => $comments]);
         }
         else
         {
