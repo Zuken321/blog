@@ -1,0 +1,140 @@
+2019-05-21 06:04:26 [172.30.0.1][-][d4a67b0191ea69ee3ab4868b815fb6be][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: site/record in /app/vendor/yiisoft/yii2/base/Controller.php:128
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('record', Array)
+#1 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('site/record', Array)
+#2 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 /app/web/index.php(12): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /app/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /app/web/index.php(12): yii\base\Application->run()
+#2 {main}
+2019-05-21 06:04:26 [172.30.0.1][-][d4a67b0191ea69ee3ab4868b815fb6be][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.30.0.1
+    in /app/views/layouts/main.php:78
+2019-05-21 06:04:26 [172.30.0.1][-][d4a67b0191ea69ee3ab4868b815fb6be][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.30.0.1
+2019-05-21 06:04:26 [172.30.0.1][-][d4a67b0191ea69ee3ab4868b815fb6be][info][application] $_GET = [
+    'r' => 'site/record'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'adminer_sid' => '0046dc4528ec910dcd71c31466f672b8'
+    'adminer_key' => 'bde3aad9250e36d0275bb818bf76d0ab'
+    'adminer_version' => '4.7.1'
+    'PHPSESSID' => 'd4a67b0191ea69ee3ab4868b815fb6be'
+    '_csrf' => '5623d174172d20bd3cc2126d59f8e129a642dc038044b22d597ab2533f0a0e5da:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"8-VxgsT-QovBldEZTrAXM2aYyiIuRm4O\";}'
+    'adminer_permanent' => ''
+    'adminer_settings' => ''
+    'adminer_engine' => ''
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => 'adminer_sid=0046dc4528ec910dcd71c31466f672b8; adminer_key=bde3aad9250e36d0275bb818bf76d0ab; adminer_version=4.7.1; PHPSESSID=d4a67b0191ea69ee3ab4868b815fb6be; _csrf=5623d174172d20bd3cc2126d59f8e129a642dc038044b22d597ab2533f0a0e5da%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%228-VxgsT-QovBldEZTrAXM2aYyiIuRm4O%22%3B%7D; adminer_permanent=; adminer_settings=; adminer_engine='
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.30.0.2'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.30.0.1'
+    'DOCUMENT_ROOT' => '/app/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/app/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/app/web/index.php'
+    'REMOTE_PORT' => '44876'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Frecord'
+    'REQUEST_URI' => '/index.php?r=site%2Frecord'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1558418666.827
+    'REQUEST_TIME' => 1558418666
+    'argv' => [
+        0 => 'r=site%2Frecord'
+    ]
+    'argc' => 1
+]
+2019-05-21 06:04:28 [172.30.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.30.0.1
+    in /app/views/layouts/main.php:78
+    in /app/controllers/SiteController.php:64
+2019-05-21 06:04:28 [172.30.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.30.0.1
+2019-05-21 06:04:28 [172.30.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'adminer_sid' => '0046dc4528ec910dcd71c31466f672b8'
+    'adminer_key' => 'bde3aad9250e36d0275bb818bf76d0ab'
+    'adminer_version' => '4.7.1'
+    'PHPSESSID' => 'd4a67b0191ea69ee3ab4868b815fb6be'
+    '_csrf' => '23ed1fca9366adf062b5b6234defeffbe280bb6850346ca8a05508aef02547a4a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"lIOFyBO-a7OHG_6Sk1Ch4sFxgjwvkeUf\";}'
+    'adminer_permanent' => ''
+    'adminer_settings' => ''
+    'adminer_engine' => ''
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://localhost:8000/index.php?r=site%2Frecord'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => 'adminer_sid=0046dc4528ec910dcd71c31466f672b8; adminer_key=bde3aad9250e36d0275bb818bf76d0ab; adminer_version=4.7.1; PHPSESSID=d4a67b0191ea69ee3ab4868b815fb6be; _csrf=23ed1fca9366adf062b5b6234defeffbe280bb6850346ca8a05508aef02547a4a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22lIOFyBO-a7OHG_6Sk1Ch4sFxgjwvkeUf%22%3B%7D; adminer_permanent=; adminer_settings=; adminer_engine='
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.30.0.2'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.30.0.1'
+    'DOCUMENT_ROOT' => '/app/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/app/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/app/web/index.php'
+    'REMOTE_PORT' => '44876'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1558418668.578
+    'REQUEST_TIME' => 1558418668
+    'argv' => []
+    'argc' => 0
+]
