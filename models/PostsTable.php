@@ -3,11 +3,11 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
-class Records extends ActiveRecord
+class PostsTable extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'records';
+        return 'posts';
     }
 }
 ?>

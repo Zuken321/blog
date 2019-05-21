@@ -10,7 +10,9 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\Records;
+use app\models\PostsTable;
+use app\models\CommentsTable;
+use app\models\CommentForm;
 
 class SiteController extends Controller
 {
@@ -129,15 +131,20 @@ class SiteController extends Controller
     }
     public function actionPosts()
     {
-        if(isset($_GET['record_id']))
+        if(isset($_GET['post_id']))
         {
-            $records = Records::find()->where(['record_id' => $_GET['record_id']])->all();
-            return $this->render('post', ['records' => $records]);
+            $model = new CommentsForm();
+            if($model->load(Yii::$app->request->post()) && $model->validate())
+            {
+                //Дописать добавление в БД
+            }
+            $post = PostsTable::find()->where(['post_id' => $_GET['post_id']])->all();
+            return $this->render('post', ['post' => $post]);
         }
         else
         {
-            $records = Records::find()->all();
-            return $this->render('posts', ['records' => $records]);
+            $posts = PostsTable::find()->all();
+            return $this->render('posts', ['posts' => $posts]);
         }
     }
 }
