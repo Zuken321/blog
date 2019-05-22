@@ -11,7 +11,6 @@ class CommentForm extends Model
     {
         return [
             [['author', 'text'], 'required'],
-
         ];
     }
 }

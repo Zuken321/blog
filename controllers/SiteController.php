@@ -13,6 +13,7 @@ use app\models\ContactForm;
 use app\models\PostsTable;
 use app\models\CommentsTable;
 use app\models\CommentForm;
+use app\models\PostForm;
 
 class SiteController extends Controller
 {
@@ -151,5 +152,21 @@ class SiteController extends Controller
             $posts = PostsTable::find()->all();
             return $this->render('posts', ['posts' => $posts]);
         }
+    }
+    public function actionNewPost()
+    {
+        $post_form = new PostForm();
+        if($post_form->load(Yii::$app->request->post()) && $post_form->validate())
+        {
+            $add_post = new PostsTable();
+            $add_post->title = $post_form->title;
+            $add_post->short_text = $post_form->short_text;
+            $add_post->text = $post_form->text;
+            $add_post->save();
+
+            $posts = PostsTable::find()->all();
+            return $this->render('posts', ['posts' => $posts]);
+        }
+        return $this->render('newPost', ['post_form' => $post_form]);
     }
 }
