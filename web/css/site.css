@@ -113,3 +113,21 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.post{
+    border-bottom: 1px solid whitesmoke;
+    text-decoration: none;
+}
+
+.post h2{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.post p{
+    margin: 0 0 10px;
+}
+
+.comment span{
+    font-size: 20px;
+}
