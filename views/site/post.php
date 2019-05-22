@@ -19,8 +19,8 @@ foreach ($post as $data):?>
     </div>
 <div>
     <?php foreach($comments as $comment):?>
-    <div>
-        <h3><?= Html::encode($comment->author)?></h3>
+    <div class="comment">
+        <span><?= Html::encode($comment->author)?></span>
         <p><?= Html::encode($comment->text)?></p>
     </div>
     <?php endforeach;?>

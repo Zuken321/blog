@@ -136,12 +136,6 @@ class SiteController extends Controller
             $model = new CommentForm();
             if($model->load(Yii::$app->request->post()) && $model->validate())
             {
-<<<<<<< HEAD
-
-            }
-            $post = PostsTable::find()->where(['post_id' => $_GET['post_id']])->all();
-            return $this->render('post', ['post' => $post, 'model' => $model]);
-=======
                 $add_comment = new CommentsTable();
                 $add_comment->post_id = $_GET['post_id'];
                 $add_comment->author = $model->author;
@@ -151,7 +145,6 @@ class SiteController extends Controller
             $post = PostsTable::find()->where(['post_id' => $_GET['post_id']])->all();
             $comments = CommentsTable::find()->where(['post_id' => $_GET['post_id']])->all();
             return $this->render('post', ['post' => $post, 'model' => $model, 'comments' => $comments]);
->>>>>>> 7b9c9a162d3d6c49cb515016ea3b355b02bf60ac
         }
         else
         {
