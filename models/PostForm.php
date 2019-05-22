@@ -6,6 +6,7 @@ use yii\base\Model;
 class PostForm extends Model
 {
     public $title, $short_text, $text;
+
     public function rules()
     {
         return [

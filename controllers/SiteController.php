@@ -144,12 +144,12 @@ class SiteController extends Controller
                 $add_comment->save();
             }
             $post = PostsTable::find()->where(['post_id' => $_GET['post_id']])->all();
-            $comments = CommentsTable::find()->where(['post_id' => $_GET['post_id']])->all();
+            $comments = CommentsTable::find()->where(['post_id' => $_GET['post_id']])->orderBy('comment_id DESC')->all();
             return $this->render('post', ['post' => $post, 'model' => $model, 'comments' => $comments]);
         }
         else
         {
-            $posts = PostsTable::find()->all();
+            $posts = PostsTable::find()->orderBy('post_id DESC')->all();
             return $this->render('posts', ['posts' => $posts]);
         }
     }
@@ -162,9 +162,10 @@ class SiteController extends Controller
             $add_post->title = $post_form->title;
             $add_post->short_text = $post_form->short_text;
             $add_post->text = $post_form->text;
+
             $add_post->save();
 
-            $posts = PostsTable::find()->all();
+            $posts = PostsTable::find()->orderBy('post_id DESC')->all();
             return $this->render('posts', ['posts' => $posts]);
         }
         return $this->render('newPost', ['post_form' => $post_form]);
