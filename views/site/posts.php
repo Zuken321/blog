@@ -1,9 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-
-foreach ($posts as $post):
 ?>
+<a href="/new_post">Добавить пост</a>
+<?php foreach ($posts as $post):?>
 <div class="post">
     <a href="/posts/<?=Html::encode($post->post_id)?>">
         <h2><?= Html::encode($post->title)?></h2>
