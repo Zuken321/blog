@@ -9479,3 +9479,449 @@ $_SERVER = [
     'argv' => []
     'argc' => 0
 ]
+2019-05-21 15:18:26 [-][-][-][error][yii\db\Exception] PDOException: could not find driver in /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Connection.php:687
+Stack trace:
+#0 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Connection.php(687): PDO->__construct('mysql:host=db:3...', 'root', 'password', NULL)
+#1 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Connection.php(996): yii\db\Connection->open()
+#3 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Command.php(253): yii\db\Connection->getSlavePdo()
+#5 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Command.php(1153): yii\db\Command->prepare(true)
+#6 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/mysql/Schema.php(319): yii\db\Command->queryAll()
+#8 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/mysql/Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Schema.php(744): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Schema.php(194): yii\db\Schema->getTableMetadata('{{%migration}}', 'schema', true)
+#11 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/controllers/MigrateController.php(210): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#12 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(875): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#13 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(166): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#14 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#15 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#16 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#17 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('', Array)
+#18 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('', Array)
+#19 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('migrate', Array)
+#20 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('migrate', Array)
+#21 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#22 /home/zuken/Downloads/blog/yii(20): yii\base\Application->run()
+#23 {main}
+
+Next yii\db\Exception: could not find driver in /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Connection.php:624
+Stack trace:
+#0 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Connection.php(996): yii\db\Connection->open()
+#1 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Command.php(253): yii\db\Connection->getSlavePdo()
+#3 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Command.php(1153): yii\db\Command->prepare(true)
+#4 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/mysql/Schema.php(319): yii\db\Command->queryAll()
+#6 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/mysql/Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Schema.php(744): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/db/Schema.php(194): yii\db\Schema->getTableMetadata('{{%migration}}', 'schema', true)
+#9 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/controllers/MigrateController.php(210): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#10 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(875): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#11 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(166): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#12 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#13 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#15 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('', Array)
+#16 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('', Array)
+#17 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('migrate', Array)
+#18 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('migrate', Array)
+#19 /home/zuken/Downloads/blog/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#20 /home/zuken/Downloads/blog/yii(20): yii\base\Application->run()
+#21 {main}
+Additional Information:
+
+2019-05-21 15:18:26 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'CLUTTER_IM_MODULE' => 'xim'
+    'LS_COLORS' => 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'
+    'LESSCLOSE' => '/usr/bin/lesspipe %s %s'
+    'XDG_MENU_PREFIX' => 'gnome-'
+    'LANG' => 'en_US.UTF-8'
+    'MANAGERPID' => '2804'
+    'DISPLAY' => ':0'
+    'INVOCATION_ID' => '6f454e8458af462d80ee85eeaff2dc30'
+    'GNOME_SHELL_SESSION_MODE' => 'ubuntu'
+    'COLORTERM' => 'truecolor'
+    'USERNAME' => 'zuken'
+    'XDG_VTNR' => '2'
+    'SSH_AUTH_SOCK' => '/run/user/1000/keyring/ssh'
+    'XDG_SESSION_ID' => '2'
+    'USER' => 'zuken'
+    'DESKTOP_SESSION' => 'ubuntu'
+    'QT4_IM_MODULE' => 'xim'
+    'TEXTDOMAINDIR' => '/usr/share/locale/'
+    'GNOME_TERMINAL_SCREEN' => '/org/gnome/Terminal/screen/c039fdb8_44ed_4101_a0d8_cc354fb21b39'
+    'PWD' => '/home/zuken/Downloads/blog'
+    'HOME' => '/home/zuken'
+    'JOURNAL_STREAM' => '9:40804'
+    'TEXTDOMAIN' => 'im-config'
+    'SSH_AGENT_PID' => '2968'
+    'QT_ACCESSIBILITY' => '1'
+    'XDG_SESSION_TYPE' => 'x11'
+    'XDG_DATA_DIRS' => '/usr/share/ubuntu:/usr/local/share:/usr/share:/var/lib/snapd/desktop'
+    'XDG_SESSION_DESKTOP' => 'ubuntu'
+    'DBUS_STARTER_ADDRESS' => 'unix:path=/run/user/1000/bus,guid=48c442a485ba7b727abc4d335ce41467'
+    'GTK_MODULES' => 'gail:atk-bridge'
+    'WINDOWPATH' => '2'
+    'TERM' => 'xterm-256color'
+    'SHELL' => '/bin/bash'
+    'VTE_VERSION' => '5202'
+    'QT_IM_MODULE' => 'xim'
+    'XMODIFIERS' => '@im=ibus'
+    'IM_CONFIG_PHASE' => '2'
+    'DBUS_STARTER_BUS_TYPE' => 'session'
+    'XDG_CURRENT_DESKTOP' => 'ubuntu:GNOME'
+    'GPG_AGENT_INFO' => '/run/user/1000/gnupg/S.gpg-agent:0:1'
+    'GNOME_TERMINAL_SERVICE' => ':1.67'
+    'XDG_SEAT' => 'seat0'
+    'SHLVL' => '1'
+    'GDMSESSION' => 'ubuntu'
+    'GNOME_DESKTOP_SESSION_ID' => 'this-is-deprecated'
+    'LOGNAME' => 'zuken'
+    'DBUS_SESSION_BUS_ADDRESS' => 'unix:path=/run/user/1000/bus,guid=48c442a485ba7b727abc4d335ce41467'
+    'XDG_RUNTIME_DIR' => '/run/user/1000'
+    'XAUTHORITY' => '/run/user/1000/gdm/Xauthority'
+    'XDG_CONFIG_DIRS' => '/etc/xdg/xdg-ubuntu:/etc/xdg'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
+    'SESSION_MANAGER' => 'local/ubuntu:@/tmp/.ICE-unix/2844,unix/ubuntu:/tmp/.ICE-unix/2844'
+    'LESSOPEN' => '| /usr/bin/lesspipe %s'
+    'GTK_IM_MODULE' => 'ibus'
+    '_' => '/usr/bin/php'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1558451906.6548
+    'REQUEST_TIME' => 1558451906
+    'argv' => [
+        0 => 'yii'
+        1 => 'migrate'
+    ]
+    'argc' => 2
+]
+2019-05-21 16:27:29 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/c6/c635b6492217d67606a0010fc0060683.bin': file_put_contents(/app/runtime/cache/c6/c635b6492217d67606a0010fc0060683.bin): failed to open stream: No such file or directory
+2019-05-21 16:27:29 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/60/60c69796c9cdfd66af3195782c1d16d7.bin': file_put_contents(/app/runtime/cache/60/60c69796c9cdfd66af3195782c1d16d7.bin): failed to open stream: No such file or directory
+2019-05-21 16:27:29 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/00/00d716905c8ed414aa0103ba17815795.bin': file_put_contents(/app/runtime/cache/00/00d716905c8ed414aa0103ba17815795.bin): failed to open stream: No such file or directory
+2019-05-21 16:27:29 [172.19.0.1][-][-][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: The directory is not writable by the Web process: /app/web/assets in /app/vendor/yiisoft/yii2/web/AssetManager.php:459
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/AssetBundle.php(185): yii\web\AssetManager->publish('/app/vendor/yii...', Array)
+#1 /app/vendor/yiisoft/yii2/web/AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /app/vendor/yiisoft/yii2/web/AssetManager.php(237): yii\web\AssetManager->loadBundle('yii\\web\\YiiAsse...', Array, true)
+#3 /app/vendor/yiisoft/yii2/web/View.php(286): yii\web\AssetManager->getBundle('yii\\web\\YiiAsse...')
+#4 /app/vendor/yiisoft/yii2/web/View.php(291): yii\web\View->registerAssetBundle('yii\\web\\YiiAsse...', NULL)
+#5 /app/vendor/yiisoft/yii2/web/AssetBundle.php(125): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#6 /app/views/layouts/main.php(13): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /app/vendor/yiisoft/yii2/base/View.php(348): require('/app/views/layo...')
+#8 /app/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/app/views/layo...', Array)
+#9 /app/vendor/yiisoft/yii2/base/Controller.php(399): yii\base\View->renderFile('/app/views/layo...', Array, Object(app\controllers\SiteController))
+#10 /app/vendor/yiisoft/yii2/base/Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#11 /app/controllers/SiteController.php(68): yii\base\Controller->render('index')
+#12 [internal function]: app\controllers\SiteController->actionIndex()
+#13 /app/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /app/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#15 /app/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('index', Array)
+#16 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('site/index', Array)
+#17 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /app/web/index.php(12): yii\base\Application->run()
+#19 {main}
+2019-05-21 16:27:29 [172.19.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.19.0.1
+2019-05-21 16:27:29 [172.19.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.19.0.1
+2019-05-21 16:27:29 [172.19.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'adminer_version' => '4.7.1'
+    'adminer_lang' => 'ru'
+    'adminer_settings' => ''
+    'adminer_engine' => ''
+    'adminer_sid' => '3307a5fb7069fedeccf50320fd59b3e8'
+    'adminer_key' => 'a2f530659fcf2480bb80a48f7614738d'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => 'adminer_version=4.7.1; adminer_lang=ru; adminer_settings=; adminer_engine=; adminer_sid=3307a5fb7069fedeccf50320fd59b3e8; adminer_key=a2f530659fcf2480bb80a48f7614738d'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.19.0.2'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.19.0.1'
+    'DOCUMENT_ROOT' => '/app/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/app/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/app/web/index.php'
+    'REMOTE_PORT' => '34784'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1558456049.516
+    'REQUEST_TIME' => 1558456049
+    'argv' => []
+    'argc' => 0
+]
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/c6/c635b6492217d67606a0010fc0060683.bin': file_put_contents(/app/runtime/cache/c6/c635b6492217d67606a0010fc0060683.bin): failed to open stream: No such file or directory
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/60/60c69796c9cdfd66af3195782c1d16d7.bin': file_put_contents(/app/runtime/cache/60/60c69796c9cdfd66af3195782c1d16d7.bin): failed to open stream: No such file or directory
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/00/00d716905c8ed414aa0103ba17815795.bin': file_put_contents(/app/runtime/cache/00/00d716905c8ed414aa0103ba17815795.bin): failed to open stream: No such file or directory
+2019-05-21 16:27:30 [172.19.0.1][-][-][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: The directory is not writable by the Web process: /app/web/assets in /app/vendor/yiisoft/yii2/web/AssetManager.php:459
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/AssetBundle.php(185): yii\web\AssetManager->publish('/app/vendor/yii...', Array)
+#1 /app/vendor/yiisoft/yii2/web/AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /app/vendor/yiisoft/yii2/web/AssetManager.php(237): yii\web\AssetManager->loadBundle('yii\\web\\YiiAsse...', Array, true)
+#3 /app/vendor/yiisoft/yii2/web/View.php(286): yii\web\AssetManager->getBundle('yii\\web\\YiiAsse...')
+#4 /app/vendor/yiisoft/yii2/web/View.php(291): yii\web\View->registerAssetBundle('yii\\web\\YiiAsse...', NULL)
+#5 /app/vendor/yiisoft/yii2/web/AssetBundle.php(125): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#6 /app/views/layouts/main.php(13): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /app/vendor/yiisoft/yii2/base/View.php(348): require('/app/views/layo...')
+#8 /app/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/app/views/layo...', Array)
+#9 /app/vendor/yiisoft/yii2/base/Controller.php(399): yii\base\View->renderFile('/app/views/layo...', Array, Object(app\controllers\SiteController))
+#10 /app/vendor/yiisoft/yii2/base/Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#11 /app/controllers/SiteController.php(68): yii\base\Controller->render('index')
+#12 [internal function]: app\controllers\SiteController->actionIndex()
+#13 /app/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /app/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#15 /app/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('index', Array)
+#16 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('site/index', Array)
+#17 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /app/web/index.php(12): yii\base\Application->run()
+#19 {main}
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.19.0.1
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.19.0.1
+2019-05-21 16:27:30 [172.19.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'adminer_version' => '4.7.1'
+    'adminer_lang' => 'ru'
+    'adminer_settings' => ''
+    'adminer_engine' => ''
+    'adminer_sid' => '3307a5fb7069fedeccf50320fd59b3e8'
+    'adminer_key' => 'a2f530659fcf2480bb80a48f7614738d'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => 'adminer_version=4.7.1; adminer_lang=ru; adminer_settings=; adminer_engine=; adminer_sid=3307a5fb7069fedeccf50320fd59b3e8; adminer_key=a2f530659fcf2480bb80a48f7614738d'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.19.0.2'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.19.0.1'
+    'DOCUMENT_ROOT' => '/app/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/app/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/app/web/index.php'
+    'REMOTE_PORT' => '34788'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1558456050.61
+    'REQUEST_TIME' => 1558456050
+    'argv' => []
+    'argc' => 0
+]
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/c6/c635b6492217d67606a0010fc0060683.bin': file_put_contents(/app/runtime/cache/c6/c635b6492217d67606a0010fc0060683.bin): failed to open stream: No such file or directory
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/60/60c69796c9cdfd66af3195782c1d16d7.bin': file_put_contents(/app/runtime/cache/60/60c69796c9cdfd66af3195782c1d16d7.bin): failed to open stream: No such file or directory
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/00/00d716905c8ed414aa0103ba17815795.bin': file_put_contents(/app/runtime/cache/00/00d716905c8ed414aa0103ba17815795.bin): failed to open stream: No such file or directory
+2019-05-21 16:27:30 [172.19.0.1][-][-][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: The directory is not writable by the Web process: /app/web/assets in /app/vendor/yiisoft/yii2/web/AssetManager.php:459
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/AssetBundle.php(185): yii\web\AssetManager->publish('/app/vendor/yii...', Array)
+#1 /app/vendor/yiisoft/yii2/web/AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /app/vendor/yiisoft/yii2/web/AssetManager.php(237): yii\web\AssetManager->loadBundle('yii\\web\\YiiAsse...', Array, true)
+#3 /app/vendor/yiisoft/yii2/web/View.php(286): yii\web\AssetManager->getBundle('yii\\web\\YiiAsse...')
+#4 /app/vendor/yiisoft/yii2/web/View.php(291): yii\web\View->registerAssetBundle('yii\\web\\YiiAsse...', NULL)
+#5 /app/vendor/yiisoft/yii2/web/AssetBundle.php(125): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#6 /app/views/layouts/main.php(13): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /app/vendor/yiisoft/yii2/base/View.php(348): require('/app/views/layo...')
+#8 /app/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/app/views/layo...', Array)
+#9 /app/vendor/yiisoft/yii2/base/Controller.php(399): yii\base\View->renderFile('/app/views/layo...', Array, Object(app\controllers\SiteController))
+#10 /app/vendor/yiisoft/yii2/base/Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#11 /app/controllers/SiteController.php(68): yii\base\Controller->render('index')
+#12 [internal function]: app\controllers\SiteController->actionIndex()
+#13 /app/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /app/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#15 /app/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('index', Array)
+#16 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('site/index', Array)
+#17 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /app/web/index.php(12): yii\base\Application->run()
+#19 {main}
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.19.0.1
+2019-05-21 16:27:30 [172.19.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.19.0.1
+2019-05-21 16:27:30 [172.19.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'adminer_version' => '4.7.1'
+    'adminer_lang' => 'ru'
+    'adminer_settings' => ''
+    'adminer_engine' => ''
+    'adminer_sid' => '3307a5fb7069fedeccf50320fd59b3e8'
+    'adminer_key' => 'a2f530659fcf2480bb80a48f7614738d'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => 'adminer_version=4.7.1; adminer_lang=ru; adminer_settings=; adminer_engine=; adminer_sid=3307a5fb7069fedeccf50320fd59b3e8; adminer_key=a2f530659fcf2480bb80a48f7614738d'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.19.0.2'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.19.0.1'
+    'DOCUMENT_ROOT' => '/app/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/app/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/app/web/index.php'
+    'REMOTE_PORT' => '34792'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1558456050.943
+    'REQUEST_TIME' => 1558456050
+    'argv' => []
+    'argc' => 0
+]
+2019-05-21 16:28:32 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/c6/c635b6492217d67606a0010fc0060683.bin': file_put_contents(/app/runtime/cache/c6/c635b6492217d67606a0010fc0060683.bin): failed to open stream: No such file or directory
+2019-05-21 16:28:32 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/60/60c69796c9cdfd66af3195782c1d16d7.bin': file_put_contents(/app/runtime/cache/60/60c69796c9cdfd66af3195782c1d16d7.bin): failed to open stream: No such file or directory
+2019-05-21 16:28:32 [172.19.0.1][-][-][warning][yii\caching\FileCache::setValue] Unable to write cache file '/app/runtime/cache/00/00d716905c8ed414aa0103ba17815795.bin': file_put_contents(/app/runtime/cache/00/00d716905c8ed414aa0103ba17815795.bin): failed to open stream: No such file or directory
+2019-05-21 16:28:32 [172.19.0.1][-][-][error][yii\base\InvalidConfigException] yii\base\InvalidConfigException: The directory is not writable by the Web process: /app/web/assets in /app/vendor/yiisoft/yii2/web/AssetManager.php:459
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/web/AssetBundle.php(185): yii\web\AssetManager->publish('/app/vendor/yii...', Array)
+#1 /app/vendor/yiisoft/yii2/web/AssetManager.php(266): yii\web\AssetBundle->publish(Object(yii\web\AssetManager))
+#2 /app/vendor/yiisoft/yii2/web/AssetManager.php(237): yii\web\AssetManager->loadBundle('yii\\web\\YiiAsse...', Array, true)
+#3 /app/vendor/yiisoft/yii2/web/View.php(286): yii\web\AssetManager->getBundle('yii\\web\\YiiAsse...')
+#4 /app/vendor/yiisoft/yii2/web/View.php(291): yii\web\View->registerAssetBundle('yii\\web\\YiiAsse...', NULL)
+#5 /app/vendor/yiisoft/yii2/web/AssetBundle.php(125): yii\web\View->registerAssetBundle('app\\assets\\AppA...')
+#6 /app/views/layouts/main.php(13): yii\web\AssetBundle::register(Object(yii\web\View))
+#7 /app/vendor/yiisoft/yii2/base/View.php(348): require('/app/views/layo...')
+#8 /app/vendor/yiisoft/yii2/base/View.php(257): yii\base\View->renderPhpFile('/app/views/layo...', Array)
+#9 /app/vendor/yiisoft/yii2/base/Controller.php(399): yii\base\View->renderFile('/app/views/layo...', Array, Object(app\controllers\SiteController))
+#10 /app/vendor/yiisoft/yii2/base/Controller.php(385): yii\base\Controller->renderContent('<div class="sit...')
+#11 /app/controllers/SiteController.php(68): yii\base\Controller->render('index')
+#12 [internal function]: app\controllers\SiteController->actionIndex()
+#13 /app/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /app/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#15 /app/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('index', Array)
+#16 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('site/index', Array)
+#17 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /app/web/index.php(12): yii\base\Application->run()
+#19 {main}
+2019-05-21 16:28:32 [172.19.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.19.0.1
+2019-05-21 16:28:32 [172.19.0.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.19.0.1
+2019-05-21 16:28:32 [172.19.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'adminer_version' => '4.7.1'
+    'adminer_lang' => 'ru'
+    'adminer_settings' => ''
+    'adminer_engine' => ''
+    'adminer_sid' => '3307a5fb7069fedeccf50320fd59b3e8'
+    'adminer_key' => 'a2f530659fcf2480bb80a48f7614738d'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'localhost:8000'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_COOKIE' => 'adminer_version=4.7.1; adminer_lang=ru; adminer_settings=; adminer_engine=; adminer_sid=3307a5fb7069fedeccf50320fd59b3e8; adminer_key=a2f530659fcf2480bb80a48f7614738d'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.25 (Debian) Server at localhost Port 8000</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.25 (Debian)'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '172.19.0.2'
+    'SERVER_PORT' => '8000'
+    'REMOTE_ADDR' => '172.19.0.1'
+    'DOCUMENT_ROOT' => '/app/web'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => '/app/web'
+    'SERVER_ADMIN' => 'webmaster@localhost'
+    'SCRIPT_FILENAME' => '/app/web/index.php'
+    'REMOTE_PORT' => '34800'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1558456112.827
+    'REQUEST_TIME' => 1558456112
+    'argv' => []
+    'argc' => 0
+]
