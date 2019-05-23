@@ -12,7 +12,7 @@ class m190523_051856_add_author_id_column_to_comments_table extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('comments', 'author_id', $this->integer());
+        $this->addColumn('comments', 'author_id', $this->integer()->notNull());
 
         $this->addForeignKey(
           'fk-comments-author_id',

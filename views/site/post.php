@@ -2,9 +2,10 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 foreach ($post as $data):?>
-    <div>
+    <div class="post">
         <h1><?= Html::encode($data->title)?></h1>
         <p><?= Html::encode($data->text)?></p>
+        <span>Автор <?= Html::encode($data->users->username)?></span>
     </div>
 <?php endforeach;?>
 <?php if(!Yii::$app->user->isGuest):?>
