@@ -121,6 +121,11 @@ a.desc:after {
 
 .post a{
     color: black;
+    text-decoration: none;
+}
+
+.post a:hover{
+    color: #606060;
 }
 
 .post h2{
