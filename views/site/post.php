@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+
 foreach ($post as $data):?>
     <div class="post">
         <h1><?= Html::encode($data->title)?></h1>

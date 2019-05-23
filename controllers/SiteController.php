@@ -136,18 +136,23 @@ class SiteController extends Controller
     {
         if(isset($_GET['post_id']))
         {
-            $model = new CommentForm();
-            if($model->load(Yii::$app->request->post()) && $model->validate())
+            $post_id = $_GET['post_id'];
+            $post = PostsTable::find()->where(['post_id' => $post_id])->count()->all();
+            if($post != 0)
             {
-                $add_comment = new CommentsTable();
-                $add_comment->post_id = $_GET['post_id'];
-                $add_comment->author_id = Yii::$app->user->identity->id;
-                $add_comment->text = $model->text;
-                $add_comment->save();
+                $comment_form = new CommentForm();
+                if($comment_form->load(Yii::$app->request->post()) && $comment_form->validate())
+                {
+                    $add_comment = new CommentsTable();
+                    $add_comment->post_id = $post_id;
+                    $add_comment->author_id = Yii::$app->user->identity->id;
+                    $add_comment->text = $comment_form->text;
+                    $add_comment->save();
+                }
             }
-            $post = PostsTable::find()->where(['post_id' => $_GET['post_id']])->all();
-            $comments = CommentsTable::find()->where(['post_id' => $_GET['post_id']])->orderBy('comment_id DESC')->all();
-            return $this->render('post', ['post' => $post, 'model' => $model, 'comments' => $comments]);
+            $post = PostsTable::find()->where(['post_id' => $post_id])->all();
+            $comments = CommentsTable::find()->where(['post_id' => $post_id])->orderBy('comment_id DESC')->all();
+            return $this->render('post', ['post' => $post, 'comment_form' => $comment_form, 'comments' => $comments]);
         }
         else
         {
