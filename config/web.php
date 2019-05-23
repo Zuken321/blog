@@ -57,6 +57,7 @@ $config = [
                 'posts' => 'site/posts',
                 'posts/<post_id:\d+>' => 'site/posts',
                 'new_post' => 'site/new-post',
+                'sign_up' => 'site/sign-up',
             ],
         ],
     ],

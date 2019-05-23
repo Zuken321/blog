@@ -7,25 +7,25 @@ foreach ($post as $data):?>
         <h1><?= Html::encode($data->title)?></h1>
         <p><?= Html::encode($data->text)?></p>
     </div>
-<?php endforeach;?>
-<div>
+<?php endforeach;
+Yii::$app->user->isGuest ? (
+'<div>
     <h3>Оставить комментарий</h3>
     <div>
         <?php $form = ActiveForm::begin();?>
-        <?= $form->field($model, 'author')?>
-        <?= $form->field($model, 'text')?>
+        <?= ' . $form->field($model, 'text') . '?>
         <div class="form-group">
-            <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
+            <?='.Html::submitButton('Отправить', ['class' => 'btn btn-primary']).'?>
         </div>
         <?php ActiveForm::end();?>
     </div>
-</div>
-
+</div>') : null
+?>
 <div>
     <h3>Комментарии</h3>
     <?php foreach($comments as $comment):?>
         <div class="comment">
-            <span><?= Html::encode($comment->author)?></span>
+            <span><?= Html::encode($comment->author_id)?></span>
             <p><?= Html::encode($comment->text)?></p>
         </div>
     <?php endforeach;?>
