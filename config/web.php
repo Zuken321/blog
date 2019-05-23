@@ -57,6 +57,7 @@ $config = [
                 'posts' => 'site/posts',
                 'posts/<post_id:\d+>' => 'site/posts',
                 'new_post' => 'site/new-post',
+                'sign_up' => 'site/sign-up',
             ],
         ],
     ],
@@ -69,7 +70,7 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        //'allowedIPs' => ['*'],
     ];
 
     $config['bootstrap'][] = 'gii';

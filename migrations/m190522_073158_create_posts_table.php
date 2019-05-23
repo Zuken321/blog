@@ -11,7 +11,7 @@ class m190522_073158_create_posts_table extends Migration
             'title' => $this->string(255)->notNull(),
             'short_text' => $this->string(500)->notNull(),
             'text' => $this->string(5000)->notNull(),
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
     }
 
 

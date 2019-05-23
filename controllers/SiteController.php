@@ -13,7 +13,9 @@ use app\models\ContactForm;
 use app\models\PostsTable;
 use app\models\CommentsTable;
 use app\models\CommentForm;
+use app\models\User;
 use app\models\PostForm;
+use app\models\SignUpForm;
 
 class SiteController extends Controller
 {
@@ -139,7 +141,7 @@ class SiteController extends Controller
             {
                 $add_comment = new CommentsTable();
                 $add_comment->post_id = $_GET['post_id'];
-                $add_comment->author = $model->author;
+                $add_comment->author_id = Yii::$app->user->identity->id;
                 $add_comment->text = $model->text;
                 $add_comment->save();
             }
@@ -169,5 +171,21 @@ class SiteController extends Controller
             return $this->render('posts', ['posts' => $posts]);
         }
         return $this->render('newPost', ['post_form' => $post_form]);
+    }
+    public function actionSignUp()
+    {
+        $signup_form = new SignUpForm();
+
+        if ($signup_form->load(Yii::$app->request->post())) {
+            if ($user = $signup_form->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signUp', [
+            'signup_form' => $signup_form,
+        ]);
     }
 }
