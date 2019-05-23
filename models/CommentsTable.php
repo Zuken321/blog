@@ -9,4 +9,9 @@ class CommentsTable extends ActiveRecord
     {
         return 'comments';
     }
+
+    public function getUsers()
+    {
+        return $this->hasOne(User::className(), ['user_id' => 'author_id']);
+    }
 }

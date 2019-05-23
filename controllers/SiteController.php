@@ -141,7 +141,7 @@ class SiteController extends Controller
             {
                 $add_comment = new CommentsTable();
                 $add_comment->post_id = $_GET['post_id'];
-                $add_comment->author = Yii::$app->user->identity->user_id;
+                $add_comment->author_id = Yii::$app->user->identity->id;
                 $add_comment->text = $model->text;
                 $add_comment->save();
             }
