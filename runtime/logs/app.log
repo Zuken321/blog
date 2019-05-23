@@ -10089,3 +10089,105 @@ $_SERVER = [
     ]
     'argc' => 2
 ]
+2019-05-23 10:21:18 [-][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1049] Unknown database 'blogs' in /app/vendor/yiisoft/yii2/db/Connection.php:687
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/db/Connection.php(687): PDO->__construct('mysql:host=db;d...', 'root', 'password', NULL)
+#1 /app/vendor/yiisoft/yii2/db/Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 /app/vendor/yiisoft/yii2/db/Connection.php(996): yii\db\Connection->open()
+#3 /app/vendor/yiisoft/yii2/db/Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 /app/vendor/yiisoft/yii2/db/Command.php(253): yii\db\Connection->getSlavePdo()
+#5 /app/vendor/yiisoft/yii2/db/Command.php(1153): yii\db\Command->prepare(true)
+#6 /app/vendor/yiisoft/yii2/db/Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /app/vendor/yiisoft/yii2/db/mysql/Schema.php(319): yii\db\Command->queryAll()
+#8 /app/vendor/yiisoft/yii2/db/mysql/Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#9 /app/vendor/yiisoft/yii2/db/Schema.php(744): yii\db\mysql\Schema->loadTableSchema('migration')
+#10 /app/vendor/yiisoft/yii2/db/Schema.php(194): yii\db\Schema->getTableMetadata('{{%migration}}', 'schema', true)
+#11 /app/vendor/yiisoft/yii2/console/controllers/MigrateController.php(210): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#12 /app/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(875): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#13 /app/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(166): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#14 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#15 /app/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#16 /app/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#17 /app/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('', Array)
+#18 /app/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('', Array)
+#19 /app/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('migrate', Array)
+#20 /app/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('migrate', Array)
+#21 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#22 /app/yii(20): yii\base\Application->run()
+#23 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1049] Unknown database 'blogs' in /app/vendor/yiisoft/yii2/db/Connection.php:624
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/db/Connection.php(996): yii\db\Connection->open()
+#1 /app/vendor/yiisoft/yii2/db/Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 /app/vendor/yiisoft/yii2/db/Command.php(253): yii\db\Connection->getSlavePdo()
+#3 /app/vendor/yiisoft/yii2/db/Command.php(1153): yii\db\Command->prepare(true)
+#4 /app/vendor/yiisoft/yii2/db/Command.php(399): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /app/vendor/yiisoft/yii2/db/mysql/Schema.php(319): yii\db\Command->queryAll()
+#6 /app/vendor/yiisoft/yii2/db/mysql/Schema.php(125): yii\db\mysql\Schema->findColumns(Object(yii\db\TableSchema))
+#7 /app/vendor/yiisoft/yii2/db/Schema.php(744): yii\db\mysql\Schema->loadTableSchema('migration')
+#8 /app/vendor/yiisoft/yii2/db/Schema.php(194): yii\db\Schema->getTableMetadata('{{%migration}}', 'schema', true)
+#9 /app/vendor/yiisoft/yii2/console/controllers/MigrateController.php(210): yii\db\Schema->getTableSchema('{{%migration}}', true)
+#10 /app/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(875): yii\console\controllers\MigrateController->getMigrationHistory(NULL)
+#11 /app/vendor/yiisoft/yii2/console/controllers/BaseMigrateController.php(166): yii\console\controllers\BaseMigrateController->getNewMigrations()
+#12 [internal function]: yii\console\controllers\BaseMigrateController->actionUp(0)
+#13 /app/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /app/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#15 /app/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('', Array)
+#16 /app/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('', Array)
+#17 /app/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('migrate', Array)
+#18 /app/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('migrate', Array)
+#19 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#20 /app/yii(20): yii\base\Application->run()
+#21 {main}
+Additional Information:
+
+2019-05-23 10:21:18 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'HOSTNAME' => '84fd78ee3964'
+    'APACHE_CONFDIR' => '/etc/apache2'
+    'PHP_USER_ID' => '33'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c'
+    'GPG_KEYS' => 'A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0 528995BFEDFBA7191D46839EF9BA0ADA31CBD89E 1729F83938DA44E27BA0F4D3DBDB397470D12172'
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--with-apxs2 --disable-cgi'
+    'PHP_ASC_URL' => 'https://secure.php.net/get/php-7.1.26.tar.xz.asc/from/this/mirror'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2'
+    'COMPOSER_ALLOW_SUPERUSER' => '1'
+    'PHP_EXTRA_BUILD_DEPS' => 'apache2-dev'
+    'PWD' => '/app'
+    'HOME' => '/root'
+    'PHP_LDFLAGS' => '-Wl,-O1 -Wl,--hash-style=both -pie'
+    'DEBIAN_FRONTEND' => 'noninteractive'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'PHP_URL' => 'https://secure.php.net/get/php-7.1.26.tar.xz/from/this/mirror'
+    'APACHE_ENVVARS' => '/etc/apache2/envvars'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2'
+    'TERM' => 'linux'
+    'PHP_ENABLE_XDEBUG' => '0'
+    'PHP_VERSION' => '7.1.26'
+    'SHLVL' => '1'
+    'VERSION_PRESTISSIMO_PLUGIN' => '^0.3.7'
+    'PHP_MD5' => ''
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHP_SHA256' => '10b7ae634c12852fae52a22dc2262e5f12418ad59fd20da2d00d71a212235d31'
+    '_' => '/app/yii'
+    'PHP_SELF' => '/app/yii'
+    'SCRIPT_NAME' => '/app/yii'
+    'SCRIPT_FILENAME' => '/app/yii'
+    'PATH_TRANSLATED' => '/app/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1558606878.3973
+    'REQUEST_TIME' => 1558606878
+    'argv' => [
+        0 => '/app/yii'
+        1 => 'migrate'
+    ]
+    'argc' => 2
+]
