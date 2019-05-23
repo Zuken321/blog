@@ -119,13 +119,22 @@ a.desc:after {
     text-decoration: none;
 }
 
+.post a{
+    color: black;
+}
+
 .post h2{
     font-size: 25px;
     font-weight: 600;
+    margin-bottom: 0;
 }
 
 .post p{
-    margin: 0 0 10px;
+    margin: 5px 0 10px;
+}
+
+.post span{
+    color: #a5a5a5;
 }
 
 .comment span{
