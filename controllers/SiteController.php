@@ -161,6 +161,7 @@ class SiteController extends Controller
         if($post_form->load(Yii::$app->request->post()) && $post_form->validate())
         {
             $add_post = new PostsTable();
+            $add_post->author_id = Yii::$app->user->identity->id;
             $add_post->title = $post_form->title;
             $add_post->short_text = $post_form->short_text;
             $add_post->text = $post_form->text;
