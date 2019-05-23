@@ -2,10 +2,6 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-if (Yii::$app->user->isGuest) {
-    // сделать редирект на posts
-    //return
-}
 ?>
 <?php $form = ActiveForm::begin();?>
 <?= $form->field($post_form, 'title')?>

@@ -9,6 +9,7 @@ class PostsTable extends ActiveRecord
     {
         return 'posts';
     }
+
     public function getUsers()
     {
         return $this->hasOne(User::className(), ['user_id' => 'author_id']);

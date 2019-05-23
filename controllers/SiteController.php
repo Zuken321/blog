@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\PostsTable;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Html;
@@ -10,11 +11,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\PostsTable;
-use app\models\CommentsTable;
-use app\models\CommentForm;
 use app\models\User;
-use app\models\PostForm;
 use app\models\SignUpForm;
 
 class SiteController extends Controller
@@ -88,9 +85,7 @@ class SiteController extends Controller
         }
 
         $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        return $this->render('login', compact('model'));
     }
 
     /**
@@ -118,9 +113,7 @@ class SiteController extends Controller
 
             return $this->refresh();
         }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+        return $this->render('contact', compact('model'));
     }
 
     /**
@@ -132,52 +125,7 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-    public function actionPosts()
-    {
-        if(isset($_GET['post_id']))
-        {
-            $post_id = $_GET['post_id'];
-            $post = PostsTable::find()->where(['post_id' => $post_id])->count()->all();
-            if($post != 0)
-            {
-                $comment_form = new CommentForm();
-                if($comment_form->load(Yii::$app->request->post()) && $comment_form->validate())
-                {
-                    $add_comment = new CommentsTable();
-                    $add_comment->post_id = $post_id;
-                    $add_comment->author_id = Yii::$app->user->identity->id;
-                    $add_comment->text = $comment_form->text;
-                    $add_comment->save();
-                }
-            }
-            $post = PostsTable::find()->where(['post_id' => $post_id])->all();
-            $comments = CommentsTable::find()->where(['post_id' => $post_id])->orderBy('comment_id DESC')->all();
-            return $this->render('post', ['post' => $post, 'comment_form' => $comment_form, 'comments' => $comments]);
-        }
-        else
-        {
-            $posts = PostsTable::find()->orderBy('post_id DESC')->all();
-            return $this->render('posts', ['posts' => $posts]);
-        }
-    }
-    public function actionNewPost()
-    {
-        $post_form = new PostForm();
-        if($post_form->load(Yii::$app->request->post()) && $post_form->validate())
-        {
-            $add_post = new PostsTable();
-            $add_post->author_id = Yii::$app->user->identity->id;
-            $add_post->title = $post_form->title;
-            $add_post->short_text = $post_form->short_text;
-            $add_post->text = $post_form->text;
 
-            $add_post->save();
-
-            $posts = PostsTable::find()->orderBy('post_id DESC')->all();
-            return $this->render('posts', ['posts' => $posts]);
-        }
-        return $this->render('newPost', ['post_form' => $post_form]);
-    }
     public function actionSignUp()
     {
         $signup_form = new SignUpForm();
@@ -190,8 +138,22 @@ class SiteController extends Controller
             }
         }
 
-        return $this->render('signUp', [
-            'signup_form' => $signup_form,
-        ]);
+        return $this->render('signUp', compact('signup_form'));
     }
+
+//    public function actionPost()
+//    {
+//        $comment_form = new CommentForm();
+//        if($comment_form->load(Yii::$app->request->post()) && $comment_form->validate())
+//        {
+//            $add_comment = new CommentsTable();
+//            $add_comment->post_id = $post_id;
+//            $add_comment->author_id = Yii::$app->user->identity->id;
+//            $add_comment->text = $comment_form->text;
+//            $add_comment->save();
+//        }
+//        $post = PostsTable::find()->where(['post_id' => $post_id])->all();
+//        $comments = CommentsTable::find()->where(['post_id' => $post_id])->orderBy('comment_id DESC')->all();
+//        return $this->render('post', ['post' => $post, 'comment_form' => $comment_form, 'comments' => $comments]);
+//    }
 }
