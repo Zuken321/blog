@@ -1,11 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-if(!Yii::$app->user->isGuest)
-{
-    echo '<a href="/new_post">Добавить пост</a>';
-}
-?>
+
+if(!Yii::$app->user->isGuest): ?>
+    <?= Html::a('Добавить пост', '/new_post');?>
+<?php endif; ?>
 <?php if(count($posts)):?>
     <?php foreach ($posts as $post):?>
     <div class="post">
