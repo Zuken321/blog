@@ -23,11 +23,14 @@ foreach ($post as $data):?>
 <?php endif;?>
 <div>
     <h3>Комментарии</h3>
-    <?php foreach($comments as $comment):?>
-        <div class="comment">
-            <span><?= Html::encode($comment->users->username)?></span>
-            <p><?= Html::encode($comment->text)?></p>
-        </div>
-    <?php endforeach;?>
+    <?php if(count($comments) != 0):?>
+        <?php foreach($comments as $comment):?>
+            <div class="comment">
+                <span><?= Html::encode($comment->users->username)?></span>
+                <p><?= Html::encode($comment->text)?></p>
+            </div>
+        <?php endforeach;?>
+    <?php else:?>
+        <span>Нет комментариев</span>
+    <?php endif;?>
 </div>
-
