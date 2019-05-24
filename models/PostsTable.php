@@ -1,8 +1,7 @@
 <?php
 namespace app\models;
 
-use Yii;
-use yii\data\ArrayDataProvider;
+use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
 
 class PostsTable extends ActiveRecord
@@ -26,11 +25,16 @@ class PostsTable extends ActiveRecord
         if ($count_post != 0) {
             $post = $this->findOne($post_id);
 
-            $comments = CommentsTable::find()->where(['post_id' => $post_id])->orderBy('comment_id DESC')->all();
-            $comments_provider =  new ArrayDataProvider([
-                'allModels' => $comments,
+            $comments = CommentsTable::find()->where(['post_id' => $post_id]);
+            $comments_provider =  new ActiveDataProvider([
+                'query' => $comments,
                 'pagination' => [
                     'pageSize' => 10,
+                ],
+                'sort' => [
+                  'defaultOrder' => [
+                      'comment_id' => SORT_DESC,
+                  ],
                 ],
             ]);
 
@@ -39,20 +43,4 @@ class PostsTable extends ActiveRecord
         }
         return false;
     }
-
-    /*
-     * Метод возвращает все посты
-     */
-    public function getPosts()
-    {
-        $posts = $this->find()->orderBy('post_id DESC')->all();
-        $posts_provider =  new ArrayDataProvider([
-            'allModels' => $posts,
-            'pagination' => [
-                'pageSize' => 10,
-            ],
-        ]);
-        return compact('posts_provider');
-    }
 }
-?>

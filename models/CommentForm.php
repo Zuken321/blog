@@ -1,7 +1,6 @@
 <?php
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
 
 class CommentForm extends Model
@@ -15,20 +14,5 @@ class CommentForm extends Model
             ['text', 'trim'],
             ['text', 'default'],
         ];
-    }
-
-    /*
-     * При успешной валидации добавляет комментарий к посту в БД
-     */
-    public function addComment($form, $post_id)
-    {
-        if ($this->validate()) {
-            $add_comment = new CommentsTable();
-            $add_comment->post_id = $post_id;
-            $add_comment->author_id = Yii::$app->user->identity->id;
-            $add_comment->text = $form->text;
-            return $add_comment->save();
-        }
-        return false;
     }
 }
