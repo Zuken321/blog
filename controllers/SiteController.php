@@ -140,20 +140,4 @@ class SiteController extends Controller
 
         return $this->render('signUp', compact('signup_form'));
     }
-
-//    public function actionPost()
-//    {
-//        $comment_form = new CommentForm();
-//        if($comment_form->load(Yii::$app->request->post()) && $comment_form->validate())
-//        {
-//            $add_comment = new CommentsTable();
-//            $add_comment->post_id = $post_id;
-//            $add_comment->author_id = Yii::$app->user->identity->id;
-//            $add_comment->text = $comment_form->text;
-//            $add_comment->save();
-//        }
-//        $post = PostsTable::find()->where(['post_id' => $post_id])->all();
-//        $comments = CommentsTable::find()->where(['post_id' => $post_id])->orderBy('comment_id DESC')->all();
-//        return $this->render('post', ['post' => $post, 'comment_form' => $comment_form, 'comments' => $comments]);
-//    }
 }

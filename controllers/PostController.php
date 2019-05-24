@@ -2,11 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\CommentsTable;
 use Yii;
 use yii\web\Controller;
 use app\models\PostForm;
 use app\models\PostsTable;
 use yii\data\ArrayDataProvider;
+use app\models\CommentForm;
 
 class PostController extends Controller
 {
@@ -22,15 +24,25 @@ class PostController extends Controller
         return $this->render('index', compact('posts_provider'));
     }
 
-    public function actionPost()
+    public function actionPost($post_id)
     {
-        if(isset($_GET['post_id'])) {
-            $post_id = $_GET['post_id'];
-            $post = PostsTable::findOne($post_id);
-            if($post != null) {
-                return $this->render('post', compact('post'));
+        if(isset($post_id)) {
+            $count_post = PostsTable::find()->where(['post_id' => $post_id])->count();
+            if($count_post != 0) {
+                $post = PostsTable::findOne($post_id);
+
+                $comments = CommentsTable::find()->orderBy('comment_id DESC')->all();
+                $comments_provider =  new ArrayDataProvider([
+                    'allModels' => $comments,
+                    'pagination' => [
+                        'pageSize' => 10,
+                    ],
+                ]);
+
+                $model = new CommentForm();
+                return $this->render('post', compact('post', 'comments_provider', 'model'));
             } else {
-                return Yii::$app->response->redirect('/post');
+                return Yii::$app->response->redirect('/posts');
             }
         } else {
             return Yii::$app->response->redirect('/posts');
@@ -43,13 +55,7 @@ class PostController extends Controller
             return Yii::$app->response->redirect('/posts');
         }
         $post_form = new PostForm();
-        if($post_form->load(Yii::$app->request->post()) && $post_form->validate()) {
-            $add_post = new PostsTable();
-            $add_post->author_id = Yii::$app->user->identity->id;
-            $add_post->title = $post_form->title;
-            $add_post->short_text = $post_form->short_text;
-            $add_post->text = $post_form->text;
-            $add_post->save();
+        if($post_form->load(Yii::$app->request->post()) && $post_form->addPost($post_form)) {
             return Yii::$app->response->redirect('/posts');
         }
         return $this->render('newPost', compact('post_form'));
