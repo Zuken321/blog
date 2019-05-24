@@ -20,6 +20,9 @@ class PostForm extends Model
         ];
     }
 
+    /*
+     * При успешной валидации добавляет пост в БД
+     */
     public function addPost($form)
     {
         if ($this->validate()) {

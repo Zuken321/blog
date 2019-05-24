@@ -17,6 +17,9 @@ class CommentForm extends Model
         ];
     }
 
+    /*
+     * При успешной валидации добавляет комментарий к посту в БД
+     */
     public function addComment($form, $post_id)
     {
         if ($this->validate()) {

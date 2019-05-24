@@ -9,6 +9,9 @@ use app\models\PostsTable;
 
 class PostController extends Controller
 {
+    /*
+     * Экшен выводит все посты из БД
+     */
     public function actionIndex()
     {
         $post_table = new PostsTable();
@@ -16,6 +19,9 @@ class PostController extends Controller
         return $this->render('index', $posts);
     }
 
+    /*
+     * Экшен выводит из БД пост с указанным id
+     */
     public function actionPost($post_id)
     {
         if (isset($post_id)) {
@@ -29,6 +35,10 @@ class PostController extends Controller
         return Yii::$app->response->redirect('/posts');
     }
 
+    /*
+     * Экшен отображает форму добавления постов, при отправки формы обрабатывает данные, при успешной валидации добавляет пост в БД
+     * Добавление постов доступно только авторизованным пользователям
+     */
     public function actionNewPost()
     {
         if (Yii::$app->user->isGuest) {

@@ -8,6 +8,9 @@ use app\models\CommentForm;
 
 class CommentController extends Controller
 {
+    /*
+     * Метод фильтрует данные, полученные с формы комментариев, при успешной валидации добавляет комментарий в БД
+     */
     public function actionIndex($post_id)
     {
         $comment_form = new CommentForm();

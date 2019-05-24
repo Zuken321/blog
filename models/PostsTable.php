@@ -17,6 +17,9 @@ class PostsTable extends ActiveRecord
         return $this->hasOne(User::className(), ['user_id' => 'author_id']);
     }
 
+    /*
+     * Метод возвращает пост с указзанным id
+     */
     public function getPost($post_id)
     {
         $count_post = $this->find()->where(['post_id' => $post_id])->count();
@@ -37,6 +40,9 @@ class PostsTable extends ActiveRecord
         return false;
     }
 
+    /*
+     * Метод возвращает все посты
+     */
     public function getPosts()
     {
         $posts = $this->find()->orderBy('post_id DESC')->all();

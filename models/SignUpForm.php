@@ -19,6 +19,9 @@ class SignUpForm extends Model
         ];
     }
 
+    /*
+     * При успешной валидации добавляет пользователя в БД
+     */
     public function signup()
     {
         if (!$this->validate()) {
