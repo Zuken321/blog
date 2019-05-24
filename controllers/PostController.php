@@ -6,7 +6,6 @@ use Yii;
 use yii\web\Controller;
 use app\models\PostForm;
 use app\models\PostsTable;
-use yii\data\ArrayDataProvider;
 
 class PostController extends Controller
 {

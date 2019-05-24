@@ -20,7 +20,7 @@ class PostForm extends Model
 
     public function addPost($form)
     {
-        if($this->validate()) {
+        if ($this->validate()) {
             $add_post = new PostsTable();
             $add_post->author_id = Yii::$app->user->identity->id;
             $add_post->title = $form->title;

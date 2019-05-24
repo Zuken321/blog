@@ -10191,3 +10191,63 @@ $_SERVER = [
     ]
     'argc' => 2
 ]
+2019-05-24 08:20:25 [-][-][-][error][yii\console\Exception] yii\console\Exception: Missing required arguments: version in /app/vendor/yiisoft/yii2/console/Controller.php:186
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/InlineAction.php(51): yii\console\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 /app/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#2 /app/vendor/yiisoft/yii2/console/Controller.php(148): yii\base\Controller->runAction('to', Array)
+#3 /app/vendor/yiisoft/yii2/base/Module.php(528): yii\console\Controller->runAction('to', Array)
+#4 /app/vendor/yiisoft/yii2/console/Application.php(180): yii\base\Module->runAction('migrate/to', Array)
+#5 /app/vendor/yiisoft/yii2/console/Application.php(147): yii\console\Application->runAction('migrate/to', Array)
+#6 /app/vendor/yiisoft/yii2/base/Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#7 /app/yii(20): yii\base\Application->run()
+#8 {main}
+2019-05-24 08:20:25 [-][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'HOSTNAME' => '486d2fa828b0'
+    'APACHE_CONFDIR' => '/etc/apache2'
+    'PHP_USER_ID' => '33'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev 		file 		g++ 		gcc 		libc-dev 		make 		pkg-config 		re2c'
+    'GPG_KEYS' => 'A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0 528995BFEDFBA7191D46839EF9BA0ADA31CBD89E 1729F83938DA44E27BA0F4D3DBDB397470D12172'
+    'PHP_EXTRA_CONFIGURE_ARGS' => '--with-apxs2 --disable-cgi'
+    'PHP_ASC_URL' => 'https://secure.php.net/get/php-7.1.26.tar.xz.asc/from/this/mirror'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2'
+    'COMPOSER_ALLOW_SUPERUSER' => '1'
+    'PHP_EXTRA_BUILD_DEPS' => 'apache2-dev'
+    'PWD' => '/app'
+    'HOME' => '/root'
+    'PHP_LDFLAGS' => '-Wl,-O1 -Wl,--hash-style=both -pie'
+    'DEBIAN_FRONTEND' => 'noninteractive'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'PHP_URL' => 'https://secure.php.net/get/php-7.1.26.tar.xz/from/this/mirror'
+    'APACHE_ENVVARS' => '/etc/apache2/envvars'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2'
+    'TERM' => 'linux'
+    'PHP_ENABLE_XDEBUG' => '0'
+    'PHP_VERSION' => '7.1.26'
+    'SHLVL' => '1'
+    'VERSION_PRESTISSIMO_PLUGIN' => '^0.3.7'
+    'PHP_MD5' => ''
+    'PATH' => '/app:/app/vendor/bin:/root/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'PHP_SHA256' => '10b7ae634c12852fae52a22dc2262e5f12418ad59fd20da2d00d71a212235d31'
+    '_' => '/app/yii'
+    'PHP_SELF' => '/app/yii'
+    'SCRIPT_NAME' => '/app/yii'
+    'SCRIPT_FILENAME' => '/app/yii'
+    'PATH_TRANSLATED' => '/app/yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1558686025.5179
+    'REQUEST_TIME' => 1558686025
+    'argv' => [
+        0 => '/app/yii'
+        1 => 'migrate/to'
+    ]
+    'argc' => 2
+]
