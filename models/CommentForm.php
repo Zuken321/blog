@@ -12,6 +12,8 @@ class CommentForm extends Model
     {
         return [
             ['text', 'required'],
+            ['text', 'trim'],
+            ['text', 'default'],
         ];
     }
 
