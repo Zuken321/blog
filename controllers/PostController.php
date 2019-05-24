@@ -6,13 +6,20 @@ use Yii;
 use yii\web\Controller;
 use app\models\PostForm;
 use app\models\PostsTable;
+use yii\data\ArrayDataProvider;
 
 class PostController extends Controller
 {
     public function actionIndex()
     {
         $posts = PostsTable::find()->orderBy('post_id DESC')->all();
-        return $this->render('index', compact('posts'));
+        $posts_provider =  new ArrayDataProvider([
+            'allModels' => $posts,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+        return $this->render('index', compact('posts_provider'));
     }
 
     public function actionPost()
