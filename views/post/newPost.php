@@ -1,8 +1,10 @@
 <?php
+
+/* @var $post_form app\models\PostForm */
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $post_form app\models\PostForm */
 ?>
 <?php $form = ActiveForm::begin();?>
 <?= $form->field($post_form, 'title')?>

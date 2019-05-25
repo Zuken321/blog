@@ -4,17 +4,24 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\web\Response;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use app\models\PostForm;
 use app\models\PostsTable;
 
-/*
- * Контроллер обрабатывает посты
+/**
+ * Контроллер отображает страницу:
+ * 1) Со всеми постами;
+ * 2) С конкретный постом и комментариями к нему;
+ * 3) Создания нового поста.
  */
 class PostController extends Controller
 {
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [
@@ -31,8 +38,10 @@ class PostController extends Controller
         ];
     }
 
-    /*
-     * Экшен выводит все посты из БД
+    /**
+     * Отображает страницу со всеми постами
+     *
+     * @return string
      */
     public function actionIndex()
     {
@@ -51,8 +60,10 @@ class PostController extends Controller
         return $this->render('index', compact('posts_provider'));
     }
 
-    /*
-     * Экшен выводит из БД пост(с указзанным id), форму добавления комментария и комментарии к посту
+    /**
+     * Отображает страницу с постом(id): пост, форма добавления коментария и комментарии к прсту
+     *
+     * @return Response|string
      */
     public function actionPost($post_id)
     {
@@ -66,9 +77,10 @@ class PostController extends Controller
         return Yii::$app->response->redirect('/posts');
     }
 
-    /*
-     * Экшен отображает форму добавления постов, при отправки формы обрабатывает данные,
-     * при успешной валидации добавляет пост в БД
+    /**
+     * Отображает страницу создания нового поста
+     *
+     * @return Response|string
      */
     public function actionCreatePost()
     {

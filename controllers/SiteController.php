@@ -34,6 +34,9 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
+                'denyCallback' => function() {
+                    return $this->goHome();
+                }
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),

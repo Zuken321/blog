@@ -16,8 +16,10 @@ class PostsTable extends ActiveRecord
         return $this->hasOne(User::className(), ['user_id' => 'author_id']);
     }
 
-    /*
-     * Метод возвращает пост(с указзанным id), форму добавления комментария и комментарии к посту
+    /**
+     * Собирает данные поста(пост, комментарии и форма добавления комментария)
+     *
+     * @return string| bool
      */
     public static function getPost($post_id)
     {
@@ -38,8 +40,8 @@ class PostsTable extends ActiveRecord
                 ],
             ]);
 
-            $model = new CommentForm();
-            return compact('post', 'comments_provider', 'model');
+            $comment_form = new CommentForm();
+            return compact('post', 'comments_provider', 'comment_form');
         }
         return false;
     }

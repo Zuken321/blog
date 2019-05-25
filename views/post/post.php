@@ -1,10 +1,13 @@
 <?php
+
+/* @var $post app\models\PostsTable */
+/* @var $comments_provider app\models\CommentsTable */
+/* @var $comment_form app\models\CommentForm */
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\ListView;
 
-/* @var $post app\models\PostsTable */
-/* @var $comments_provider app\models\PostsTable */
 ?>
 
 <div class="post">
@@ -17,7 +20,7 @@ use yii\widgets\ListView;
     <div>
         <h3>Оставить комментарий</h3>
         <?php $form = ActiveForm::begin(['action' => '/comment/'. $post->post_id]);?>
-        <?= $form->field($model,'text')?>
+        <?= $form->field($comment_form,'text')?>
         <div class="form-group">
             <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary'])?>
         </div>

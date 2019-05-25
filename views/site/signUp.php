@@ -1,7 +1,10 @@
 <?php
 
+/* @var $signup_form app\models\SignUpForm */
+
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+
 ?>
 <div class="site-signup">
     <div class="row">

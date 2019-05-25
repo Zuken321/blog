@@ -1,4 +1,7 @@
 <?php
+
+/* @var $model app\models\CommentsTable */
+
 use yii\helpers\Html;
 
 ?>

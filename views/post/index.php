@@ -1,9 +1,9 @@
 <?php
 
+/* @var $posts_provider yii\data\ActiveDataProvider */
+
 use yii\helpers\Html;
 use yii\widgets\ListView;
-
-/* @var $posts_provider yii\data\ActiveDataProvider */
 
 if(!Yii::$app->user->isGuest): ?>
     <?= Html::a('Добавить пост', '/create_post');?>

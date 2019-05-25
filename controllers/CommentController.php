@@ -4,17 +4,19 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\web\Response;
 use yii\helpers\Html;
 use app\models\CommentForm;
 
-/*
- * Контроллер обрабатывает комментарии
+/**
+ * Контроллер обрабатывает добавление новых комментариев
  */
 class CommentController extends Controller
 {
-    /*
-     * Метод фильтрует данные, полученные с формы комментариев, при успешной валидации добавляет комментарий в БД и
-     * перенапрявляет на пост с новым комментарием
+    /**
+     * Добавляет новый комментарий и перенаправляет на страницу с ним
+     *
+     * @return Response|string
      */
     public function actionIndex($post_id)
     {

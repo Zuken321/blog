@@ -1,5 +1,7 @@
 <?php
 
+/* @var $model app\models\PostsTable */
+
 use yii\helpers\Html;
 
 ?>
