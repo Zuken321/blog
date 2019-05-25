@@ -3,8 +3,9 @@
 namespace app\controllers;
 
 use Yii;
-use yii\data\ActiveDataProvider;
 use yii\web\Controller;
+use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use app\models\PostForm;
 use app\models\PostsTable;
@@ -14,6 +15,22 @@ use app\models\PostsTable;
  */
 class PostController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create-post'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     /*
      * Экшен выводит все посты из БД
      */
@@ -55,9 +72,6 @@ class PostController extends Controller
      */
     public function actionCreatePost()
     {
-        if (Yii::$app->user->isGuest) {
-            return Yii::$app->response->redirect('/posts');
-        }
         $post_form = new PostForm();
         if($post_form->load(Yii::$app->request->post())) {
             if($post_form->createPost()) {
