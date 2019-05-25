@@ -58,8 +58,7 @@ $config = [
                 'posts' => 'post/index',
                 'GET post/<post_id:\d+>' => 'post/post',
                 'POST comment/<post_id:\d+>' => 'comment/index',
-                'GET create_post' => 'post/create-post-form',
-                'POST create_post' => 'post/create-post'
+                'create_post' => 'post/create-post',
             ],
         ],
     ],

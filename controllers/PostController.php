@@ -35,13 +35,12 @@ class PostController extends Controller
     }
 
     /*
-     * Экшен выводит из БД пост с указанным id
+     * Экшен выводит из БД пост(с указзанным id), форму добавления комментария и комментарии к посту
      */
     public function actionPost($post_id)
     {
         if (isset($post_id)) {
-            $post_table = new PostsTable();
-            $post = $post_table->getPost($post_id);
+            $post = PostsTable::getPost($post_id);
 
             if ($post != false) {
                 return $this->render('post', $post);
@@ -51,33 +50,21 @@ class PostController extends Controller
     }
 
     /*
-     * Экшен отображает форму добавления постов, при отправки формы обрабатывает данные, при успешной валидации добавляет пост в БД
-     * Добавление постов доступно только авторизованным пользователям
+     * Экшен отображает форму добавления постов, при отправки формы обрабатывает данные,
+     * при успешной валидации добавляет пост в БД
      */
-    public function actionCreatePostForm()
+    public function actionCreatePost()
     {
         if (Yii::$app->user->isGuest) {
             return Yii::$app->response->redirect('/posts');
         }
         $post_form = new PostForm();
-        return $this->render('newPost', compact('post_form')); // надо обработать ошибку при некорректных данных
-    }
-
-    /*
-     * При успешной валидации добавляет пост в БД
-     */
-    public function actionCreatePost()
-    {
-        $post_form = new PostForm();
-        if($post_form->load(Yii::$app->request->post()) && $post_form->validate()) {
-            $create_post = new PostsTable();
-            $create_post->author_id = Yii::$app->user->identity->id;
-            $create_post->title = $post_form->title;
-            $create_post->short_text = $post_form->short_text;
-            $create_post->text = $post_form->text;
-            $create_post->save();
-            return Yii::$app->response->redirect('/posts');
+        if($post_form->load(Yii::$app->request->post())) {
+            if($post_form->createPost()) {
+                return Yii::$app->response->redirect('/posts');
+            }
+            return Yii::$app->session->setFlash('error', Html::errorSummary($post_form));//Вывести ошибку валидации
         }
-        return Yii::$app->session->setFlash('error', Html::errorSummary($post_form));//Вывести ошибку валидации
+        return $this->render('newPost', compact('post_form'));
     }
 }

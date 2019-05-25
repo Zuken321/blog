@@ -17,13 +17,13 @@ class PostsTable extends ActiveRecord
     }
 
     /*
-     * Метод возвращает пост с указзанным id
+     * Метод возвращает пост(с указзанным id), форму добавления комментария и комментарии к посту
      */
-    public function getPost($post_id)
+    public static function getPost($post_id)
     {
-        $count_post = $this->find()->where(['post_id' => $post_id])->count();
+        $count_post = self::find()->where(['post_id' => $post_id])->count();
         if ($count_post != 0) {
-            $post = $this->findOne($post_id);
+            $post = self::findOne($post_id);
 
             $comments = CommentsTable::find()->where(['post_id' => $post_id]);
             $comments_provider =  new ActiveDataProvider([
