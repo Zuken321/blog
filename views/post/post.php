@@ -19,8 +19,8 @@ use yii\widgets\ListView;
 <?php if(!Yii::$app->user->isGuest):?>
     <div>
         <h3>Оставить комментарий</h3>
-        <?php $form = ActiveForm::begin(['action' => '/comment/'. $post->post_id]);?>
-        <?= $form->field($comment_form,'text')?>
+        <?php $form = ActiveForm::begin(['action' => '/comment/'. $post->post_id, 'options' => ['class' => 'comment-form']]);?>
+        <?= $form->field($comment_form,'text')->textarea(['rows' => 2]);?>
         <div class="form-group">
             <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary'])?>
         </div>

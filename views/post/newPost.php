@@ -6,9 +6,9 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 ?>
-<?php $form = ActiveForm::begin();?>
+<?php $form = ActiveForm::begin(['options' => ['class' => 'create-post-form']]);?>
 <?= $form->field($post_form, 'title')?>
-<?= $form->field($post_form, 'text')?>
+<?= $form->field($post_form, 'text')->textarea(['rows' => 6])?>
 <div class="form-group">
     <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']) ?>
 </div>
