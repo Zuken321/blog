@@ -16,6 +16,11 @@ class PostsTable extends ActiveRecord
         return $this->hasOne(User::className(), ['user_id' => 'author_id']);
     }
 
+    public function getComments()
+    {
+        return $this->hasMany(CommentsTable::className(), ['comment_id' => 'post_id']);
+    }
+
     /**
      * Собирает данные поста(пост, комментарии и форма добавления комментария)
      *

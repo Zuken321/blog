@@ -69,7 +69,6 @@ class PostController extends Controller
     {
         if (isset($post_id)) {
             $post = PostsTable::getPost($post_id);
-
             if ($post != false) {
                 return $this->render('post', $post);
             }
