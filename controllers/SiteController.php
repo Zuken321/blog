@@ -129,16 +129,16 @@ class SiteController extends Controller
 
     public function actionSignUp()
     {
-        $signup_form = new SignUpForm();
+        $signUpForm = new SignUpForm();
 
-        if ($signup_form->load(Yii::$app->request->post())) {
-            if ($user = $signup_form->signup()) {
+        if ($signUpForm->load(Yii::$app->request->post())) {
+            if ($user = $signUpForm->signup()) {
                 if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
                 }
             }
         }
 
-        return $this->render('signUp', compact('signup_form'));
+        return $this->render('signUp', compact('signUpForm'));
     }
 }

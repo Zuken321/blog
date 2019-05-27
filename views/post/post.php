@@ -1,8 +1,10 @@
 <?php
 
-/* @var $post app\models\PostsTable */
-/* @var $comments_provider app\models\CommentsTable */
-/* @var $comment_form app\models\CommentForm */
+/**
+ * @var $post app\models\PostsTable
+ * @var $commentsProvider app\models\CommentsTable
+ * @var $commentForm app\models\CommentForm
+ */
 
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -13,8 +15,8 @@ use yii\widgets\ListView;
 <?php
     if(!Yii::$app->user->isGuest) {
         if($post->author_id == Yii::$app->user->identity->id) {
-            echo Html::a('Редактировать', Url::to(['post/update', 'id' => $post->post_id])) .'&nbsp&nbsp';
-            echo Html::a('Удалить', Url::to(['post/delete', 'id' => $post->post_id]));
+            echo Html::a('Редактировать', Url::to(['post/update', 'id' => $post->post_id]), ['class' => 'edit-btn']);
+            echo Html::a('Удалить', Url::to(['post/delete', 'id' => $post->post_id]), ['class' => 'edit-btn']);
         }
     }
 ?>
@@ -34,7 +36,7 @@ use yii\widgets\ListView;
             ]);
         ?>
 
-        <?= $form->field($comment_form,'text')->textarea(['rows' => 2]);?>
+        <?= $form->field($commentForm,'text')->textarea(['rows' => 2]);?>
         <div class="form-group">
             <?= Html::submitButton('Написать', ['class' => 'btn btn-primary'])?>
         </div>
@@ -45,7 +47,7 @@ use yii\widgets\ListView;
 <div>
     <h3>Комментарии</h3>
     <?= ListView::widget([
-        'dataProvider' => $comments_provider,
+        'dataProvider' => $commentsProvider,
         'itemView' => 'commentsList',
         'summary' => false,
         'emptyText' => 'Нет комментариев',

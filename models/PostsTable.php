@@ -24,16 +24,16 @@ class PostsTable extends ActiveRecord
     /**
      * Собирает данные поста(пост, комментарии и форма добавления комментария)
      *
-     * @return string| bool
+     * @return array| bool
      */
-    public static function getPost($post_id)
+    public static function getPost($postId)
     {
-        $count_post = self::find()->where(['post_id' => $post_id])->count();
-        if ($count_post != 0) {
-            $post = self::findOne($post_id);
+        $countPost = self::find()->where(['post_id' => $postId])->count();
+        if ($countPost != 0) {
+            $post = self::findOne($postId);
 
-            $comments = CommentsTable::find()->where(['post_id' => $post_id]);
-            $comments_provider =  new ActiveDataProvider([
+            $comments = CommentsTable::find()->where(['post_id' => $postId]);
+            $commentsProvider =  new ActiveDataProvider([
                 'query' => $comments,
                 'pagination' => [
                     'pageSize' => 10,
@@ -45,8 +45,8 @@ class PostsTable extends ActiveRecord
                 ],
             ]);
 
-            $comment_form = new CommentForm();
-            return compact('post', 'comments_provider', 'comment_form');
+            $commentForm = new CommentForm();
+            return compact('post', 'commentsProvider', 'commentForm');
         }
         return false;
     }

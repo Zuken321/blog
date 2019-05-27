@@ -153,3 +153,7 @@ a.desc:after {
 .comment-form{
     width: 500px;
 }
+
+.edit-btn{
+    margin-right: 10px;
+}

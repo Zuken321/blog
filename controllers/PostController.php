@@ -43,9 +43,8 @@ class PostController extends Controller
      */
     public function actionIndex()
     {
-        $posts = PostsTable::find();
-        $posts_provider = new ActiveDataProvider([
-            'query' => $posts,
+        $postsProvider = new ActiveDataProvider([
+            'query' => PostsTable::find(),
             'pagination' => [
                 'pageSize' => 10,
             ],
@@ -55,7 +54,7 @@ class PostController extends Controller
                 ],
             ],
         ]);
-        return $this->render('index', compact('posts_provider'));
+        return $this->render('index', compact('postsProvider'));
     }
 
     /**
@@ -66,11 +65,9 @@ class PostController extends Controller
      */
     public function actionView($id)
     {
-        if (isset($id)) {
-            $post = PostsTable::getPost($id);
-            if ($post != false) {
-                return $this->render('post', $post);
-            }
+        $post = PostsTable::getPost($id);
+        if ($post != false) {
+            return $this->render('post', $post);
         }
         return Yii::$app->response->redirect('/posts');
     }
@@ -82,15 +79,15 @@ class PostController extends Controller
      */
     public function actionCreate()
     {
-        $post_form = new PostForm();
-        if($post_form->load(Yii::$app->request->post())) {
-            if($post_form->createPost()) {
+        $postForm = new PostForm();
+        if($postForm->load(Yii::$app->request->post())) {
+            if($postForm->createPost()) {
                 return Yii::$app->response->redirect('/posts');
             }
-            return Yii::$app->session->setFlash('error', Html::errorSummary($post_form));//Вывести ошибку валидации
+            Yii::$app->session->setFlash('error', Html::errorSummary($postForm));//Вывести ошибку валидации
         }
         $update = false;
-        return $this->render('newPost', compact('post_form', 'update'));
+        return $this->render('newPost', compact('postForm', 'update'));
     }
 
     /**
@@ -105,12 +102,12 @@ class PostController extends Controller
         if($post->author_id != Yii::$app->user->id) {
             return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
         }
-        $post_form = new PostForm();
-        if($post_form->load(Yii::$app->request->post()) && $post_form->updatePost($id)) {
+        $postForm = new PostForm();
+        if($postForm->load(Yii::$app->request->post()) && $postForm->updatePost($id)) {
             return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
         }
         $update = true;
-        return $this->render('newPost', compact('post_form', 'update', 'post'));
+        return $this->render('newPost', compact('postForm', 'update', 'post'));
     }
 
     /**

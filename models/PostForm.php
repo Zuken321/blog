@@ -9,6 +9,9 @@ class PostForm extends Model
 {
     public $title, $short_text, $text;
 
+    /**
+     * @return array the validation rules.
+     */
     public function rules()
     {
         return [
@@ -20,30 +23,37 @@ class PostForm extends Model
         ];
     }
 
-    /*
-     * Метод обрабатывает данные формы. При их валидности сохраняет пост в БД, иначе возвращает false
+    /**
+     * Сохраняет пост в БД
+     *
+     * @return bool
      */
     public function createPost()
     {
         if($this->validate()) {
-            $create_post = new PostsTable();
-            $create_post->author_id = Yii::$app->user->identity->id;
-            $create_post->title = $this->title;
-            $create_post->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
-            $create_post->text = $this->text;
-            return $create_post->save();
+            $createPost = new PostsTable();
+            $createPost->author_id = Yii::$app->user->identity->id;
+            $createPost->title = $this->title;
+            $createPost->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
+            $createPost->text = $this->text;
+            return $createPost->save();
         }
         return false;
     }
 
-    public function updatePost($post_id)
+    /**
+     * Обновляет пост в БД
+     *
+     * @return bool
+     */
+    public function updatePost($postId)
     {
         if($this->validate()) {
-            $update_post = PostsTable::findOne($post_id);
-            $update_post->title = $this->title;
-            $update_post->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
-            $update_post->text = $this->text;
-            return $update_post->save();
+            $updatePost = PostsTable::findOne($postId);
+            $updatePost->title = $this->title;
+            $updatePost->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
+            $updatePost->text = $this->text;
+            return $updatePost->save();
         }
         return false;
     }

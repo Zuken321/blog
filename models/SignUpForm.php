@@ -8,6 +8,9 @@ class SignUpForm extends Model
     public $username;
     public $password;
 
+    /**
+     * @return array the validation rules.
+     */
     public function rules()
     {
         return [
@@ -19,20 +22,21 @@ class SignUpForm extends Model
         ];
     }
 
-    /*
-     * При успешной валидации добавляет пользователя в БД
+    /**
+     * Добавляет пользователя в БД
+     *
+     * @return bool
      */
     public function signup()
     {
-        if (!$this->validate()) {
-            return null;
+        if ($this->validate()) {
+            $user = new User();
+            $user->username = $this->username;
+            $user->setPassword($this->password);
+            $user->generateAuthKey();
+            return $user->save();
         }
-
-        $user = new User();
-        $user->username = $this->username;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-        return $user->save() ? $user : null;
+        return false;
     }
 }
 ?>

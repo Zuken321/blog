@@ -17,15 +17,16 @@ class CommentController extends Controller
     /**
      * Добавляет новый комментарий и перенаправляет на страницу с ним
      *
+     * @param $id integer
      * @return Response|string
      */
     public function actionCreate($id)
     {
-        $comment_form = new CommentForm();
-        if ($comment_form->load(Yii::$app->request->post()) && $comment_form->createComment($id)) {
+        $commentForm = new CommentForm();
+        if ($commentForm->load(Yii::$app->request->post()) && $commentForm->createComment($id)) {
             return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
         }
-        //return Yii::$app->response->redirect("/post/{$post_id}"); // Надо обработать ошибку при проверки валидации
-        return Yii::$app->session->setFlash('error', Html::errorSummary($comment_form));
+        Yii::$app->session->setFlash('error', Html::errorSummary($commentForm));
+        return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
     }
 }

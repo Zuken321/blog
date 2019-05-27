@@ -8,6 +8,9 @@ class CommentForm extends Model
 {
     public $author, $text;
 
+    /**
+     * @return array the validation rules.
+     */
     public function rules()
     {
         return [
@@ -17,18 +20,20 @@ class CommentForm extends Model
         ];
     }
 
-    /*
-     * Метод проверяет полученные данные с формы на валидность. Если данные валидны заносит комментарий в базу,
-     * иначе возвразает false
+    /**
+     * Сохраняет комментарий в БД
+     *
+     * @param $postId integer
+     * @return bool
      */
-    public function createComment($post_id)
+    public function createComment($postId)
     {
         if ($this->validate()) {
-            $create_comment = new CommentsTable();
-            $create_comment->post_id = $post_id;
-            $create_comment->author_id = Yii::$app->user->identity->id;
-            $create_comment->text = $this->text;
-            return $create_comment->save();
+            $createComment = new CommentsTable();
+            $createComment->post_id = $postId;
+            $createComment->author_id = Yii::$app->user->identity->id;
+            $createComment->text = $this->text;
+            return $createComment->save();
         }
         return false;
     }

@@ -1,6 +1,6 @@
 <?php
 
-/* @var $model app\models\CommentsTable */
+/** @var $model app\models\CommentsTable */
 
 use yii\helpers\Html;
 
