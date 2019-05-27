@@ -23,10 +23,14 @@ class CommentController extends Controller
     public function actionCreate($id)
     {
         $commentForm = new CommentForm();
-        if ($commentForm->load(Yii::$app->request->post()) && $commentForm->createComment($id)) {
-            return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
+        if ($commentForm->load(Yii::$app->request->post())) {
+            if($commentForm->createComment($id)) {
+                return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
+            } else {
+                Yii::$app->session->setFlash('error', Html::errorSummary($commentForm));
+                return $this->redirect(Yii::$app->request->referrer);
+            }
         }
-        Yii::$app->session->setFlash('error', Html::errorSummary($commentForm));
         return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
     }
 }

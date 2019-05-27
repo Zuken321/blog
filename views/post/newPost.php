@@ -9,6 +9,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+if(Yii::$app->session->hasFlash('error')) {
+    echo Yii::$app->session->getFlash('error');
+}
 ?>
 
 <?php $form = ActiveForm::begin(['options' => ['class' => 'create-post-form']]);?>

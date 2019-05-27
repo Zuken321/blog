@@ -19,6 +19,12 @@ use yii\widgets\ListView;
             echo Html::a('Удалить', Url::to(['post/delete', 'id' => $post->post_id]), ['class' => 'edit-btn']);
         }
     }
+    if(Yii::$app->session->hasFlash('success')) {
+        echo Yii::$app->session->getFlash('success');
+    }
+    if(Yii::$app->session->hasFlash('error')) {
+        echo Yii::$app->session->getFlash('error');
+}
 ?>
 <div class="post">
     <h1><?= Html::encode($post->title)?></h1>
@@ -35,7 +41,6 @@ use yii\widgets\ListView;
                 'options' => ['class' => 'comment-form'],
             ]);
         ?>
-
         <?= $form->field($commentForm,'text')->textarea(['rows' => 2]);?>
         <div class="form-group">
             <?= Html::submitButton('Написать', ['class' => 'btn btn-primary'])?>

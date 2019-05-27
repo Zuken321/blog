@@ -82,9 +82,10 @@ class PostController extends Controller
         $postForm = new PostForm();
         if($postForm->load(Yii::$app->request->post())) {
             if($postForm->createPost()) {
+                Yii::$app->session->setFlash('success', 'Статья сохранена');
                 return Yii::$app->response->redirect('/posts');
             }
-            Yii::$app->session->setFlash('error', Html::errorSummary($postForm));//Вывести ошибку валидации
+            Yii::$app->session->setFlash('error', Html::errorSummary($postForm));
         }
         $update = false;
         return $this->render('newPost', compact('postForm', 'update'));
@@ -104,6 +105,7 @@ class PostController extends Controller
         }
         $postForm = new PostForm();
         if($postForm->load(Yii::$app->request->post()) && $postForm->updatePost($id)) {
+            Yii::$app->session->setFlash('success', 'Статья обновлена');
             return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
         }
         $update = true;
@@ -124,6 +126,7 @@ class PostController extends Controller
             return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
         }
         $post->delete();
+        Yii::$app->session->setFlash('success', 'Статья удалена');
         return Yii::$app->response->redirect('/posts');
     }
 }
