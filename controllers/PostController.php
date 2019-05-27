@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\AccessControl;
@@ -27,7 +28,7 @@ class PostController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create'],
+                'only' => ['create', 'update'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -91,6 +92,27 @@ class PostController extends Controller
             }
             return Yii::$app->session->setFlash('error', Html::errorSummary($post_form));//Вывести ошибку валидации
         }
-        return $this->render('newPost', compact('post_form'));
+        $update = false;
+        return $this->render('newPost', compact('post_form', 'update'));
+    }
+
+    /**
+     * Отображает страницу с изменением уже имеющегося поста
+     *
+     * @param $id integer
+     * @return Response|string
+     */
+    public function actionUpdate($id)
+    {
+        $post = PostsTable::findOne($id);
+        if($post->author_id != Yii::$app->user->identity->id) {
+            return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
+        }
+        $post_form = new PostForm();
+        if($post_form->load(Yii::$app->request->post()) && $post_form->updatePost($id)) {
+            return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
+        }
+        $update = true;
+        return $this->render('newPost', compact('post_form', 'update', 'post'));
     }
 }

@@ -10,7 +10,13 @@ use yii\widgets\ActiveForm;
 use yii\widgets\ListView;
 
 ?>
-
+<?php
+    if(!Yii::$app->user->isGuest) {
+        if($post->author_id == Yii::$app->user->identity->id) {
+            echo Html::a('Редактировать', Url::to(['post/update', 'id' => $post->post_id]));
+        }
+    }
+?>
 <div class="post">
     <h1><?= Html::encode($post->title)?></h1>
     <p><?= Html::encode($post->text)?></p>
@@ -29,7 +35,7 @@ use yii\widgets\ListView;
 
         <?= $form->field($comment_form,'text')->textarea(['rows' => 2]);?>
         <div class="form-group">
-            <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary'])?>
+            <?= Html::submitButton('Написать', ['class' => 'btn btn-primary'])?>
         </div>
         <?php ActiveForm::end();?>
     </div>

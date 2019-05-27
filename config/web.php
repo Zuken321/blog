@@ -51,7 +51,6 @@ $config = [
             'rules' => [
                 'defaultRoute' => 'site/index',
                 '<action:(about|contact|login|logout|sign-up)>' => 'site/<action>',
-                '<controller:(post)>/<action:(create)>' => '<controller>/<action>',
                 '<controller:(post|comment)>/<id:\d+>/<action:(create|update|delete)>' => '<controller>/<action>',
                 '<controller:(post)>/<id:\d+>' => '<controller>/view',
                 '<controller:(post)>s' => '<controller>/index'

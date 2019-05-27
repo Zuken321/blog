@@ -35,4 +35,16 @@ class PostForm extends Model
         }
         return false;
     }
+
+    public function updatePost($post_id)
+    {
+        if($this->validate()) {
+            $update_post = PostsTable::findOne($post_id);
+            $update_post->title = $this->title;
+            $update_post->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
+            $update_post->text = $this->text;
+            return $update_post->save();
+        }
+        return false;
+    }
 }
