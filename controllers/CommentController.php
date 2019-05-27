@@ -17,20 +17,17 @@ class CommentController extends Controller
     /**
      * Добавляет новый комментарий и перенаправляет на страницу с ним
      *
-     * @param $id integer
+     * @param integer $id
      * @return Response|string
      */
     public function actionCreate($id)
     {
         $commentForm = new CommentForm();
-        if ($commentForm->load(Yii::$app->request->post())) {
-            if($commentForm->createComment($id)) {
-                return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
-            } else {
-                Yii::$app->session->setFlash('error', Html::errorSummary($commentForm));
-                return $this->redirect(Yii::$app->request->referrer);
-            }
+        if ($commentForm->load(Yii::$app->request->post()) && !$commentForm->createComment($id)) {
+            Yii::$app->session->setFlash('error', Html::errorSummary($commentForm));
+            return $this->redirect(Yii::$app->request->referrer);
         }
-        return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
+        return $this->redirect(Url::to(['post/view', 'id' => $id]));
+
     }
 }

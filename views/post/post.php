@@ -1,13 +1,12 @@
 <?php
 
 /**
- * @var $post app\models\PostsTable
- * @var $commentsProvider app\models\CommentsTable
- * @var $commentForm app\models\CommentForm
+ * @var app\models\PostsTable $post
+ * @var \yii\data\ActiveDataProvider $commentsProvider
+ * @var app\models\CommentForm $commentForm
  */
 
 use yii\helpers\Html;
-use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\widgets\ListView;
 

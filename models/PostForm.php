@@ -24,37 +24,24 @@ class PostForm extends Model
     }
 
     /**
-     * Сохраняет пост в БД
+     * Сохраняет|обновляет пост в БД
      *
      * @return bool
      */
-    public function createPost()
+    public function Save($postId = null)
     {
         if(!$this->validate()) {
             return false;
         }
-        $createPost = new PostsTable();
-        $createPost->author_id = Yii::$app->user->identity->id;
-        $createPost->title = $this->title;
-        $createPost->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
-        $createPost->text = $this->text;
-        return $createPost->save();
-    }
-
-    /**
-     * Обновляет пост в БД
-     *
-     * @return bool
-     */
-    public function updatePost($postId)
-    {
-        if(!$this->validate()) {
-            return false;
+        if(!$postId) {
+            $post = new PostsTable();
+            $post->author_id = Yii::$app->user->id;
+        } else {
+            $post = PostsTable::findOne($postId);
         }
-        $updatePost = PostsTable::findOne($postId);
-        $updatePost->title = $this->title;
-        $updatePost->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
-        $updatePost->text = $this->text;
-        return $updatePost->save();
+        $post->title = $this->title;
+        $post->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
+        $post->text = $this->text;
+        return $post->save();
     }
 }

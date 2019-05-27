@@ -15,6 +15,8 @@ use app\models\PostsTable;
 /**
  * Контроллер отображает все посты, конкретный пост, создаёт новые посты, редактирует и удаляет их:
  */
+
+
 class PostController extends Controller
 {
     /**
@@ -60,7 +62,7 @@ class PostController extends Controller
     /**
      * Отображает страницу с постом(id): пост, форма добавления коментария и комментарии к прсту
      *
-     * @param $id integer
+     * @param integer $id
      * @return Response|string
      */
     public function actionView($id)
@@ -81,7 +83,7 @@ class PostController extends Controller
     {
         $postForm = new PostForm();
         if($postForm->load(Yii::$app->request->post())) {
-            if($postForm->createPost()) {
+            if($postForm->Save()) {
                 Yii::$app->session->setFlash('success', 'Статья сохранена');
                 return Yii::$app->response->redirect('/posts');
             }
@@ -94,7 +96,7 @@ class PostController extends Controller
     /**
      * Отображает страницу с формой изменения уже имеющегося поста
      *
-     * @param $id integer
+     * @param integer $id
      * @return Response|string
      */
     public function actionUpdate($id)
@@ -104,7 +106,7 @@ class PostController extends Controller
             return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
         }
         $postForm = new PostForm();
-        if($postForm->load(Yii::$app->request->post()) && $postForm->updatePost($id)) {
+        if($postForm->load(Yii::$app->request->post()) && $postForm->Save($id)) {
             Yii::$app->session->setFlash('success', 'Статья обновлена');
             return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
         }
@@ -115,7 +117,7 @@ class PostController extends Controller
     /**
      * Удаляет выбранный пост
      *
-     * @param $id integer
+     * @param integer $id
      * @return Response
      * @throws ?
      */

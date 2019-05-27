@@ -1,6 +1,6 @@
 <?php
 
-/** @var $postsProvider yii\data\ActiveDataProvider */
+/** @var yii\data\ActiveDataProvider $postsProvider */
 
 use yii\helpers\Html;
 use yii\helpers\Url;

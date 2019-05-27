@@ -1,6 +1,6 @@
 <?php
 
-/** @var $model app\models\PostsTable */
+/** @var app\models\PostsTable $model */
 
 use yii\helpers\Html;
 use yii\helpers\Url;

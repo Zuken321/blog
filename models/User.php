@@ -8,6 +8,13 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
+/**
+ *
+ * Class User
+ * @package app\models
+ * @property CommentsTable[] $comments
+ * @property PostsTable[] $posts
+ */
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
     public static function tableName()
@@ -111,7 +118,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function getComments()
     {
-        return $this->hasMany(CommentsTable::className(), ['author_id' => 'user_id']);
+        return $this->hasMany(CommentsTable::class, ['author_id' => 'user_id']);
     }
 
     /**
@@ -121,6 +128,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function getPosts()
     {
-        return $this->hasMany(PostsTable::className(), ['author_id' => 'user_id']);
+        return $this->hasMany(PostsTable::class, ['author_id' => 'user_id']);
     }
 }

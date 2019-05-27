@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @var $postForm app\models\PostForm
- * @var $post app\models\PostsTable
- * @var $update app\controllers\PostController
+ * @var app\models\PostForm $postForm
+ * @var app\models\PostsTable $post
+ * @var bool $update
  */
 
 use yii\helpers\Html;

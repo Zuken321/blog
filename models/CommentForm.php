@@ -23,7 +23,7 @@ class CommentForm extends Model
     /**
      * Сохраняет комментарий в БД
      *
-     * @param $postId integer
+     * @param integer $postId
      * @return bool
      */
     public function createComment($postId)
