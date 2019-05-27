@@ -30,15 +30,15 @@ class PostForm extends Model
      */
     public function createPost()
     {
-        if($this->validate()) {
-            $createPost = new PostsTable();
-            $createPost->author_id = Yii::$app->user->identity->id;
-            $createPost->title = $this->title;
-            $createPost->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
-            $createPost->text = $this->text;
-            return $createPost->save();
+        if(!$this->validate()) {
+            return false;
         }
-        return false;
+        $createPost = new PostsTable();
+        $createPost->author_id = Yii::$app->user->identity->id;
+        $createPost->title = $this->title;
+        $createPost->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
+        $createPost->text = $this->text;
+        return $createPost->save();
     }
 
     /**
@@ -48,13 +48,13 @@ class PostForm extends Model
      */
     public function updatePost($postId)
     {
-        if($this->validate()) {
-            $updatePost = PostsTable::findOne($postId);
-            $updatePost->title = $this->title;
-            $updatePost->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
-            $updatePost->text = $this->text;
-            return $updatePost->save();
+        if(!$this->validate()) {
+            return false;
         }
-        return false;
+        $updatePost = PostsTable::findOne($postId);
+        $updatePost->title = $this->title;
+        $updatePost->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
+        $updatePost->text = $this->text;
+        return $updatePost->save();
     }
 }

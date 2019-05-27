@@ -28,13 +28,13 @@ class CommentForm extends Model
      */
     public function createComment($postId)
     {
-        if ($this->validate()) {
-            $createComment = new CommentsTable();
-            $createComment->post_id = $postId;
-            $createComment->author_id = Yii::$app->user->identity->id;
-            $createComment->text = $this->text;
-            return $createComment->save();
+        if (!$this->validate()) {
+            return false;
         }
-        return false;
+        $createComment = new CommentsTable();
+        $createComment->post_id = $postId;
+        $createComment->author_id = Yii::$app->user->identity->id;
+        $createComment->text = $this->text;
+        return $createComment->save();
     }
 }
