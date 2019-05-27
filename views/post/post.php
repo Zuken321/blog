@@ -15,8 +15,8 @@ use yii\widgets\ListView;
 <?php
     if(!Yii::$app->user->isGuest) {
         if($post->author_id == Yii::$app->user->identity->id) {
-            echo Html::a('Редактировать', Url::to(['post/update', 'id' => $post->post_id]), ['class' => 'edit-btn']);
-            echo Html::a('Удалить', Url::to(['post/delete', 'id' => $post->post_id]), ['class' => 'edit-btn']);
+            echo Html::a('Редактировать', ['post/update', 'id' => $post->post_id], ['class' => 'edit-btn']);
+            echo Html::a('Удалить', ['post/delete', 'id' => $post->post_id], ['class' => 'edit-btn']);
         }
     }
     if(Yii::$app->session->hasFlash('success')) {
@@ -37,7 +37,7 @@ use yii\widgets\ListView;
         <h3>Оставить комментарий</h3>
         <?php
             $form = ActiveForm::begin([
-                'action' => Url::to(['comment/create', 'id' => $post->post_id]),
+                'action' => ['comment/create', 'id' => $post->post_id],
                 'options' => ['class' => 'comment-form'],
             ]);
         ?>
