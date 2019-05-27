@@ -5,6 +5,7 @@
 /* @var $comment_form app\models\CommentForm */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 use yii\widgets\ListView;
 
@@ -19,7 +20,13 @@ use yii\widgets\ListView;
 <?php if(!Yii::$app->user->isGuest):?>
     <div>
         <h3>Оставить комментарий</h3>
-        <?php $form = ActiveForm::begin(['action' => '/comment/'. $post->post_id, 'options' => ['class' => 'comment-form']]);?>
+        <?php
+            $form = ActiveForm::begin([
+                'action' => Url::to(['comment/create', 'id' => $post->post_id]),
+                'options' => ['class' => 'comment-form'],
+            ]);
+        ?>
+
         <?= $form->field($comment_form,'text')->textarea(['rows' => 2]);?>
         <div class="form-group">
             <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary'])?>

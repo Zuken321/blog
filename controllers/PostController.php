@@ -27,7 +27,7 @@ class PostController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create-post'],
+                'only' => ['create'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -63,12 +63,13 @@ class PostController extends Controller
     /**
      * Отображает страницу с постом(id): пост, форма добавления коментария и комментарии к прсту
      *
+     * @param $id integer
      * @return Response|string
      */
-    public function actionPost($post_id)
+    public function actionView($id)
     {
-        if (isset($post_id)) {
-            $post = PostsTable::getPost($post_id);
+        if (isset($id)) {
+            $post = PostsTable::getPost($id);
             if ($post != false) {
                 return $this->render('post', $post);
             }
@@ -81,7 +82,7 @@ class PostController extends Controller
      *
      * @return Response|string
      */
-    public function actionCreatePost()
+    public function actionCreate()
     {
         $post_form = new PostForm();
         if($post_form->load(Yii::$app->request->post())) {
