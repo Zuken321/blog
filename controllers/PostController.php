@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
@@ -26,7 +28,7 @@ class PostController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['create', 'update', 'delete'],
                 'rules' => [
                     [
@@ -64,14 +66,14 @@ class PostController extends Controller
      *
      * @param integer $id
      * @return Response|string
+     * @throws NotFoundHttpException
      */
     public function actionView($id)
     {
-        $post = PostsTable::getPost($id);
-        if ($post != false) {
-            return $this->render('post', $post);
+        if (!$post = PostsTable::getPost($id)) {
+            throw new NotFoundHttpException('Запрашиваемый пост не найден');
         }
-        return Yii::$app->response->redirect('/posts');
+        return $this->render('post', $post);
     }
 
     /**
@@ -85,7 +87,7 @@ class PostController extends Controller
         if($postForm->load(Yii::$app->request->post())) {
             if($postForm->Save()) {
                 Yii::$app->session->setFlash('success', 'Статья сохранена');
-                return Yii::$app->response->redirect('/posts');
+                return $this->redirect('/posts');
             }
             Yii::$app->session->setFlash('error', Html::errorSummary($postForm));
         }
@@ -98,17 +100,18 @@ class PostController extends Controller
      *
      * @param integer $id
      * @return Response|string
+     * @throws ForbiddenHttpException
      */
     public function actionUpdate($id)
     {
         $post = PostsTable::findOne($id);
         if($post->author_id != Yii::$app->user->id) {
-            return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
+            throw new ForbiddenHttpException('У вас недостаточно прав для изменения этой записи');
         }
         $postForm = new PostForm();
         if($postForm->load(Yii::$app->request->post()) && $postForm->Save($id)) {
             Yii::$app->session->setFlash('success', 'Статья обновлена');
-            return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
+            return $this->redirect(Url::to(['post/view', 'id' => $id]));
         }
         $update = true;
         return $this->render('newPost', compact('postForm', 'update', 'post'));
@@ -119,16 +122,16 @@ class PostController extends Controller
      *
      * @param integer $id
      * @return Response
-     * @throws ?
+     * @throws ForbiddenHttpException
      */
     public function actionDelete($id)
     {
         $post = PostsTable::findOne($id);
         if($post->author_id != Yii::$app->user->id) {
-            return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
+            throw new ForbiddenHttpException('У вас недостаточно прав для удаления этой записи');
         }
         $post->delete();
         Yii::$app->session->setFlash('success', 'Статья удалена');
-        return Yii::$app->response->redirect('/posts');
+        return $this->redirect('/posts');
     }
 }

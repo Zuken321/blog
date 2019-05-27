@@ -39,4 +39,3 @@ class SignUpForm extends Model
         return $user->save();
     }
 }
-?>

@@ -28,7 +28,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
         ];
     }
 
