@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
@@ -101,8 +102,23 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
+    /**
+     * Устанавливает связь между таблицами Users и Comments
+     *
+     * @return ActiveQuery
+     */
     public function getComments()
     {
         return $this->hasMany(CommentsTable::className(), ['author_id' => 'user_id']);
+    }
+
+    /**
+     * Устанавливает связь между таблицами Users и Posts
+     *
+     * @return ActiveQuery
+     */
+    public function getPosts()
+    {
+        return $this->hasMany(PostsTable::className(), ['author_id' => 'user_id']);
     }
 }

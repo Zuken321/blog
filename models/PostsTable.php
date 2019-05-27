@@ -2,6 +2,7 @@
 namespace app\models;
 
 use yii\data\ActiveDataProvider;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 class PostsTable extends ActiveRecord
@@ -11,14 +12,24 @@ class PostsTable extends ActiveRecord
         return 'posts';
     }
 
+    /**
+     * Устанавливает связь между таблицами Posts и Users
+     *
+     * @return ActiveQuery
+     */
     public function getUsers()
     {
         return $this->hasOne(User::className(), ['user_id' => 'author_id']);
     }
 
+    /**
+     * Устанавливает связь между таблицами Posts и Comments
+     *
+     * @return ActiveQuery
+     */
     public function getComments()
     {
-        return $this->hasMany(CommentsTable::className(), ['comment_id' => 'post_id']);
+        return $this->hasMany(CommentsTable::className(), ['post_id' => 'post_id']);
     }
 
     /**
@@ -32,9 +43,8 @@ class PostsTable extends ActiveRecord
         if ($countPost != 0) {
             $post = self::findOne($postId);
 
-            $comments = CommentsTable::find()->where(['post_id' => $postId]);
             $commentsProvider =  new ActiveDataProvider([
-                'query' => $comments,
+                'query' => $post->getComments(),
                 'pagination' => [
                     'pageSize' => 10,
                 ],
