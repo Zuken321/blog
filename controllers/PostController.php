@@ -13,10 +13,7 @@ use app\models\PostForm;
 use app\models\PostsTable;
 
 /**
- * Контроллер отображает страницу:
- * 1) Со всеми постами;
- * 2) С конкретный постом и комментариями к нему;
- * 3) Создания нового поста.
+ * Контроллер отображает все посты, конкретный пост, создаёт новые посты, редактирует и удаляет их:
  */
 class PostController extends Controller
 {
@@ -97,7 +94,7 @@ class PostController extends Controller
     }
 
     /**
-     * Отображает страницу с изменением уже имеющегося поста
+     * Отображает страницу с формой изменения уже имеющегося поста
      *
      * @param $id integer
      * @return Response|string
@@ -105,7 +102,7 @@ class PostController extends Controller
     public function actionUpdate($id)
     {
         $post = PostsTable::findOne($id);
-        if($post->author_id != Yii::$app->user->identity->id) {
+        if($post->author_id != Yii::$app->user->id) {
             return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
         }
         $post_form = new PostForm();
@@ -121,11 +118,12 @@ class PostController extends Controller
      *
      * @param $id integer
      * @return Response
+     * @throws ?
      */
     public function actionDelete($id)
     {
         $post = PostsTable::findOne($id);
-        if($post->author_id != Yii::$app->user->identity->id) {
+        if($post->author_id != Yii::$app->user->id) {
             return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
         }
         $post->delete();
