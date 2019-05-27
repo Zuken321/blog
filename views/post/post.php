@@ -13,7 +13,8 @@ use yii\widgets\ListView;
 <?php
     if(!Yii::$app->user->isGuest) {
         if($post->author_id == Yii::$app->user->identity->id) {
-            echo Html::a('Редактировать', Url::to(['post/update', 'id' => $post->post_id]));
+            echo Html::a('Редактировать', Url::to(['post/update', 'id' => $post->post_id])) .'&nbsp&nbsp';
+            echo Html::a('Удалить', Url::to(['post/delete', 'id' => $post->post_id]));
         }
     }
 ?>

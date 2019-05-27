@@ -28,7 +28,7 @@ class PostController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create', 'update'],
+                'only' => ['create', 'update', 'delete'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -114,5 +114,21 @@ class PostController extends Controller
         }
         $update = true;
         return $this->render('newPost', compact('post_form', 'update', 'post'));
+    }
+
+    /**
+     * Удаляет выбранный пост
+     *
+     * @param $id integer
+     * @return Response
+     */
+    public function actionDelete($id)
+    {
+        $post = PostsTable::findOne($id);
+        if($post->author_id != Yii::$app->user->identity->id) {
+            return Yii::$app->response->redirect(Url::to(['post/view', 'id' => $id]));
+        }
+        $post->delete();
+        return Yii::$app->response->redirect('/posts');
     }
 }
