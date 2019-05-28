@@ -11,6 +11,7 @@ use app\models\CommentForm;
 
 /**
  * Контроллер обрабатывает добавление новых комментариев
+ * @package app\controllers
  */
 class CommentController extends Controller
 {

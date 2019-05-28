@@ -4,6 +4,12 @@ namespace app\models;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
+/**
+ * Class CommentsTable
+ * @package app\models
+ * @property User[] $users
+ * @property PostsTable[] $posts
+ */
 class CommentsTable extends ActiveRecord
 {
     public static function tableName()
@@ -18,7 +24,7 @@ class CommentsTable extends ActiveRecord
      */
     public function getUsers()
     {
-        return $this->hasOne(User::className(), ['user_id' => 'author_id']);
+        return $this->hasOne(User::class, ['user_id' => 'author_id']);
     }
 
     /**
@@ -28,7 +34,7 @@ class CommentsTable extends ActiveRecord
      */
     public function getPosts()
     {
-        return $this->hasOne(User::className(), ['post_id' => 'post_id']);
+        return $this->hasOne(PostsTable::class, ['post_id' => 'post_id']);
     }
 
 }

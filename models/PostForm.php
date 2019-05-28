@@ -4,9 +4,13 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 
+/**
+ * Class PostForm
+ * @package app\models
+ */
 class PostForm extends Model
 {
-    public $title, $short_text, $text;
+    public $title, $text;
 
     /**
      * @return array the validation rules.

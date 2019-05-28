@@ -4,6 +4,10 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 
+/**
+ * Class CommentForm
+ * @package app\models
+ */
 class CommentForm extends Model
 {
     public $author, $text;

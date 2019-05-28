@@ -3,6 +3,10 @@ namespace app\models;
 
 use yii\base\Model;
 
+/**
+ * Модель обрабатывает получаемые с формы данные
+ * @package app\models
+ */
 class SignUpForm extends Model
 {
     public $username;

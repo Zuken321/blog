@@ -5,6 +5,12 @@ use yii\data\ActiveDataProvider;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
+/**
+ * Class PostsTable
+ * @package app\models
+ * @property CommentsTable[] $comments
+ * @property User[] $users
+ */
 class PostsTable extends ActiveRecord
 {
     public static function tableName()
@@ -19,7 +25,7 @@ class PostsTable extends ActiveRecord
      */
     public function getUsers()
     {
-        return $this->hasOne(User::className(), ['user_id' => 'author_id']);
+        return $this->hasOne(User::class, ['user_id' => 'author_id']);
     }
 
     /**
@@ -29,7 +35,7 @@ class PostsTable extends ActiveRecord
      */
     public function getComments()
     {
-        return $this->hasMany(CommentsTable::className(), ['post_id' => 'post_id']);
+        return $this->hasMany(CommentsTable::class, ['post_id' => 'post_id']);
     }
 
     /**
