@@ -86,8 +86,7 @@ class PostController extends Controller
     public function actionCreate()
     {
         $postForm = new PostForm();
-        $update = false;
-        return $this->render('newPost', compact('postForm', 'update'));
+        return $this->render('newPost', compact('postForm'));
     }
 
     /**
@@ -104,8 +103,8 @@ class PostController extends Controller
             throw new ForbiddenHttpException('У вас недостаточно прав для изменения этой записи');
         }
         $postForm = new PostForm();
-        $update = true;
-        return $this->render('newPost', compact('postForm', 'update', 'post'));
+        $postForm->postId = $id;
+        return $this->render('newPost', compact('postForm', 'post'));
     }
 
     /**

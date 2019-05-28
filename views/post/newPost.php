@@ -14,7 +14,7 @@ if(Yii::$app->session->hasFlash('error')) {
 }
 ?>
 
-<?php if($update):?>
+<?php if($postForm->postId != null):?>
     <?php $form = ActiveForm::begin(['action' => ['post/save', 'id' => $post->post_id], 'options' => ['class' => 'create-post-form']]);?>
     <?= $form->field($postForm, 'title')->textInput(['value' => $post->title]);?>
     <?= $form->field($postForm, 'text')->textarea(['rows' => 6, 'value' => $post->text]);?>

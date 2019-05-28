@@ -14,6 +14,7 @@ use yii\base\Model;
 class PostForm extends Model
 {
     public $title, $text;
+    public $postId = null;
 
     /**
      * @return array the validation rules.
