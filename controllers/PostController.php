@@ -29,7 +29,7 @@ class PostController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create', 'update', 'delete'],
+                'only' => ['create', 'update', 'save', 'delete'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -84,13 +84,6 @@ class PostController extends Controller
     public function actionCreate()
     {
         $postForm = new PostForm();
-        if($postForm->load(Yii::$app->request->post())) {
-            if($postForm->Save()) {
-                Yii::$app->session->setFlash('success', 'Статья сохранена');
-                return $this->redirect('/posts');
-            }
-            Yii::$app->session->setFlash('error', Html::errorSummary($postForm));
-        }
         $update = false;
         return $this->render('newPost', compact('postForm', 'update'));
     }
@@ -109,12 +102,32 @@ class PostController extends Controller
             throw new ForbiddenHttpException('У вас недостаточно прав для изменения этой записи');
         }
         $postForm = new PostForm();
-        if($postForm->load(Yii::$app->request->post()) && $postForm->Save($id)) {
-            Yii::$app->session->setFlash('success', 'Статья обновлена');
-            return $this->redirect(Url::to(['post/view', 'id' => $id]));
-        }
         $update = true;
         return $this->render('newPost', compact('postForm', 'update', 'post'));
+    }
+
+    /**
+     * Сохраняет новый пост, либо изменяет уже имеющийся
+     *
+     * @param integer|null $id
+     * @return Response|string
+     * @throws NotFoundHttpException
+     */
+    public function actionSave($id = null)
+    {
+        $postForm = new PostForm();
+        if(!$postForm->load(Yii::$app->request->post())) {
+            throw new NotFoundHttpException('Страница не найдена');
+        }
+        if(!$postForm->save($id)) {
+            Yii::$app->session->setFlash('error', Html::errorSummary($postForm));
+            return Yii::$app->request->referrer;
+        }
+        Yii::$app->session->setFlash('success', 'Статья сохранена');
+        if(!$id) {
+            return $this->redirect('/posts');
+        }
+        return $this->redirect(Url::to(['post/view', 'id' => $id]));
     }
 
     /**

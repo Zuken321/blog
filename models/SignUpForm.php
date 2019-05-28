@@ -25,9 +25,9 @@ class SignUpForm extends Model
     /**
      * Добавляет пользователя в БД
      *
-     * @return bool
+     * @return User|bool
      */
-    public function signup()
+    public function signUp()
     {
         if (!$this->validate()) {
             return false;
@@ -36,6 +36,6 @@ class SignUpForm extends Model
         $user->username = $this->username;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        return $user->save();
+        return $user->save() ? $user : null;
     }
 }

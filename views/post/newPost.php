@@ -14,14 +14,15 @@ if(Yii::$app->session->hasFlash('error')) {
 }
 ?>
 
-<?php $form = ActiveForm::begin(['options' => ['class' => 'create-post-form']]);?>
 <?php if($update):?>
+    <?php $form = ActiveForm::begin(['action' => ['post/save', 'id' => $post->post_id], 'options' => ['class' => 'create-post-form']]);?>
     <?= $form->field($postForm, 'title')->textInput(['value' => $post->title]);?>
     <?= $form->field($postForm, 'text')->textarea(['rows' => 6, 'value' => $post->text]);?>
     <div class="form-group">
         <?= Html::submitButton('Изменить', ['class' => 'btn btn-primary']) ?>
     </div>
 <?php else:?>
+    <?php $form = ActiveForm::begin(['action' => ['post/save'], 'options' => ['class' => 'create-post-form']]);?>
     <?= $form->field($postForm, 'title')?>
     <?= $form->field($postForm, 'text')->textarea(['rows' => 6])?>
     <div class="form-group">

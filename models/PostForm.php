@@ -27,7 +27,7 @@ class PostForm extends Model
      *
      * @return bool
      */
-    public function Save($postId = null)
+    public function save($postId = null)
     {
         if(!$this->validate()) {
             return false;
