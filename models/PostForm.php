@@ -60,6 +60,12 @@ class PostForm extends Model
         return $post->save();
     }
 
+    /**
+     * Заполняет форму данными поста
+     *
+     * @param integer $postId
+     * @return $this
+     */
     public function find($postId)
     {
         $post = PostsTable::findOne($postId);

@@ -67,7 +67,7 @@ class PostController extends Controller
      * Отображает страницу с постом(id): пост, форма добавления коментария и комментарии к прсту
      *
      * @param integer $id
-     * @return Response|string
+     * @return string
      * @throws NotFoundHttpException
      */
     public function actionView($id)
@@ -81,7 +81,7 @@ class PostController extends Controller
     /**
      * Отображает страницу создания нового поста
      *
-     * @return Response|string
+     * @return string
      */
     public function actionCreate()
     {
