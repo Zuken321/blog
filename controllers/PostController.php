@@ -93,18 +93,16 @@ class PostController extends Controller
      * Отображает страницу с формой изменения уже имеющегося поста
      *
      * @param integer $id
-     * @return Response|string
+     * @return string
      * @throws ForbiddenHttpException
      */
     public function actionUpdate($id)
     {
-        $post = PostsTable::findOne($id);
-        if($post->author_id != Yii::$app->user->id) {
+        $postForm = new PostForm(['postId' => $id]);
+        if($postForm->author_id != Yii::$app->user->id) {
             throw new ForbiddenHttpException('У вас недостаточно прав для изменения этой записи');
         }
-        $postForm = new PostForm();
-        $postForm->postId = $id;
-        return $this->render('newPost', compact('postForm', 'post'));
+        return $this->render('newPost', compact('postForm'));
     }
 
     /**

@@ -13,8 +13,16 @@ use yii\base\Model;
  */
 class PostForm extends Model
 {
-    public $title, $text;
+    public $title, $text, $author_id;
     public $postId = null;
+
+    public function __construct($config = [])
+    {
+        parent::__construct($config);
+        if($this->postId != null) {
+            $this->find($this->postId);
+        }
+    }
 
     /**
      * @return array the validation rules.
@@ -50,5 +58,14 @@ class PostForm extends Model
         $post->short_text = mb_strimwidth($this->text, 0, 500, "... Читать дальше...");
         $post->text = $this->text;
         return $post->save();
+    }
+
+    public function find($postId)
+    {
+        $post = PostsTable::findOne($postId);
+        $this->author_id = $post->author_id;
+        $this-> title = $post->title;
+        $this->text = $post->text;
+        return $this;
     }
 }
