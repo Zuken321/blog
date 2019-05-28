@@ -127,6 +127,11 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    /**
+     * Отображает форму регистрации пользователя
+     *
+     * @return string|Response
+     */
     public function actionSignUp()
     {
         $signUpForm = new SignUpForm();

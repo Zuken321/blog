@@ -15,7 +15,10 @@ use app\models\PostForm;
 use app\models\PostsTable;
 
 /**
+ * Class PostController
+ *
  * Контроллер отображает все посты, конкретный пост, создаёт новые посты, редактирует и удаляет их
+ *
  * @package app\controllers
  */
 class PostController extends Controller

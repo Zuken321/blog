@@ -11,6 +11,9 @@ use yii\db\ActiveRecord;
 /**
  *
  * Class User
+ *
+ * Является образом таблицы Users
+ *
  * @package app\models
  * @property CommentsTable[] $comments
  * @property PostsTable[] $posts

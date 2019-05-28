@@ -6,6 +6,9 @@ use yii\base\Model;
 
 /**
  * Class CommentForm
+ *
+ * Модель обрабатывает получаемые с формы данные
+ *
  * @package app\models
  */
 class CommentForm extends Model

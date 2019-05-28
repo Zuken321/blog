@@ -7,6 +7,9 @@ use yii\db\ActiveRecord;
 
 /**
  * Class PostsTable
+ *
+ * Является образом таблицы Posts
+ *
  * @package app\models
  * @property CommentsTable[] $comments
  * @property User[] $users

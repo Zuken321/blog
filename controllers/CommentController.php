@@ -10,7 +10,10 @@ use yii\helpers\Url;
 use app\models\CommentForm;
 
 /**
+ * Class CommentController
+ *
  * Контроллер обрабатывает добавление новых комментариев
+ *
  * @package app\controllers
  */
 class CommentController extends Controller

@@ -6,6 +6,9 @@ use yii\base\Model;
 
 /**
  * Class PostForm
+ *
+ * Модель обрабатывает получаемые с формы данные
+ *
  * @package app\models
  */
 class PostForm extends Model
