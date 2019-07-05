@@ -1,16 +1,47 @@
 <?php
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 
+/**
+ * Class CommentForm
+ *
+ * Модель обрабатывает получаемые с формы данные
+ *
+ * @package app\models
+ */
 class CommentForm extends Model
 {
     public $author, $text;
 
+    /**
+     * @return array the validation rules.
+     */
     public function rules()
     {
         return [
-            [['text'], 'required'],
+            ['text', 'required'],
+            ['text', 'trim'],
+            ['text', 'default'],
         ];
+    }
+
+    /**
+     * Сохраняет комментарий в БД
+     *
+     * @param integer $postId
+     * @return bool
+     */
+    public function createComment($postId)
+    {
+        if (!$this->validate()) {
+            return false;
+        }
+        $createComment = new CommentsTable();
+        $createComment->post_id = $postId;
+        $createComment->author_id = Yii::$app->user->identity->id;
+        $createComment->text = $this->text;
+        return $createComment->save();
     }
 }

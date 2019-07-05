@@ -1,7 +1,9 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $content string */
+/**
+ * @var $this \yii\web\View
+ * @var $content string
+ */
 
 use app\widgets\Alert;
 use yii\helpers\Html;
@@ -38,7 +40,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Posts', 'url' => ['/site/posts']],
+            ['label' => 'Posts', 'url' => ['/post/index']],
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
@@ -54,7 +56,7 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             ),
-            Yii::$app->user->isGuest ? (['label' => 'SignUp', 'url' => ['/sign_up']]) : '',
+            Yii::$app->user->isGuest ? (['label' => 'SignUp', 'url' => ['/site/sign-up']]) : '',
         ],
     ]);
     NavBar::end();

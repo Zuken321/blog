@@ -3,11 +3,21 @@ namespace app\models;
 
 use yii\base\Model;
 
+/**
+ * Class SignUpForm
+ *
+ * Модель обрабатывает получаемые с формы данные
+ *
+ * @package app\models
+ */
 class SignUpForm extends Model
 {
     public $username;
     public $password;
 
+    /**
+     * @return array the validation rules.
+     */
     public function rules()
     {
         return [
@@ -19,12 +29,16 @@ class SignUpForm extends Model
         ];
     }
 
-    public function signup()
+    /**
+     * Добавляет пользователя в БД
+     *
+     * @return User|bool
+     */
+    public function signUp()
     {
         if (!$this->validate()) {
-            return null;
+            return false;
         }
-
         $user = new User();
         $user->username = $this->username;
         $user->setPassword($this->password);
@@ -32,4 +46,3 @@ class SignUpForm extends Model
         return $user->save() ? $user : null;
     }
 }
-?>

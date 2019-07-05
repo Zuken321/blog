@@ -5,31 +5,33 @@ namespace app\models;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
+/**
+ *
+ * Class User
+ *
+ * Является образом таблицы Users
+ *
+ * @package app\models
+ * @property CommentsTable[] $comments
+ * @property PostsTable[] $posts
+ */
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_ACTIVE = 10;
-
     public static function tableName()
     {
         return 'users';
     }
 
-
-    public function rules()
-    {
-        return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-        ];
-    }
-
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
         ];
     }
 
@@ -38,7 +40,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne(['user_id' => $id, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['user_id' => $id]);
     }
 
     /**
@@ -58,7 +60,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username]);
     }
 
     /**
@@ -96,18 +98,39 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
 
+    /**
+     * Хеширует пароль
+     */
     public function setPassword($password)
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 
+    /**
+     * Генерирует токен
+     */
     public function generateAuthKey()
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
+    /**
+     * Устанавливает связь между таблицами Users и Comments
+     *
+     * @return ActiveQuery
+     */
     public function getComments()
     {
-        return $this->hasMany(CommentsTable::className(), ['author_id' => 'user_id']);
+        return $this->hasMany(CommentsTable::class, ['author_id' => 'user_id']);
+    }
+
+    /**
+     * Устанавливает связь между таблицами Users и Posts
+     *
+     * @return ActiveQuery
+     */
+    public function getPosts()
+    {
+        return $this->hasMany(PostsTable::class, ['author_id' => 'user_id']);
     }
 }
